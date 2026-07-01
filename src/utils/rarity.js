@@ -52,12 +52,6 @@ export const STEP_COSTS = {
   21: '3T',   22: '4.5T', 23: '6T',
 }
 
-// Derives the Storage URL for a (droid, rarity) image.
-// Files are named {safe_name}__{rarity}.png in the "droid-images" bucket.
-export function getDroidImageUrl(supabaseUrl, name, rarity) {
-  const safe = name.replace(/[^a-zA-Z0-9-]/g, '_')
-  return `${supabaseUrl}/storage/v1/object/public/droid-images/${safe}__${rarity}.png`
-}
 
 export const MIN_STEP = 1
 export const MAX_STEP = 23

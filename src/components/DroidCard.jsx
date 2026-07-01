@@ -1,30 +1,26 @@
-import { useState } from 'react'
-import { RARITY_LABEL, RARITY_STYLES, getDroidImageUrl } from '../utils/rarity'
+import { RARITY_LABEL, RARITY_STYLES } from '../utils/rarity'
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL
+function initials(name) {
+  return name.replace(/[^A-Z0-9]/gi, '').slice(0, 3).toUpperCase()
+}
+
+const RARITY_AVATAR = {
+  base:    'bg-gray-700 text-gray-300',
+  gold:    'bg-amber-900/60 text-amber-400',
+  diamond: 'bg-cyan-900/60 text-cyan-300',
+  rainbow: 'rainbow-badge text-white',
+  beskar:  'beskar-badge text-slate-900',
+}
 
 export default function DroidCard({ droid }) {
   const { name, firstStep, lastStep, maxRarity } = droid
   const style = RARITY_STYLES[maxRarity]
-  const imgSrc = getDroidImageUrl(SUPABASE_URL, name, maxRarity)
-  const [imgFailed, setImgFailed] = useState(false)
 
   return (
     <div className="droid-card">
-      {/* Droid image */}
-      <div className="w-12 h-12 flex-shrink-0 rounded-lg overflow-hidden bg-sw-deep border border-sw-border flex items-center justify-center">
-        {!imgFailed ? (
-          <img
-            src={imgSrc}
-            alt={name}
-            className="w-full h-full object-contain"
-            onError={() => setImgFailed(true)}
-          />
-        ) : (
-          <span className="text-sw-muted text-[10px] font-orbitron text-center leading-tight px-0.5">
-            {name.slice(0, 3)}
-          </span>
-        )}
+      {/* Avatar */}
+      <div className={`w-12 h-12 flex-shrink-0 rounded-lg flex items-center justify-center font-orbitron text-[10px] font-bold border border-sw-border ${RARITY_AVATAR[maxRarity]}`}>
+        {initials(name)}
       </div>
 
       {/* Name + meta */}
