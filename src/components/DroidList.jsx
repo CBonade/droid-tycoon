@@ -1,6 +1,6 @@
 import DroidCard from './DroidCard'
 
-export default function DroidList({ droids, loading, error }) {
+export default function DroidList({ droids, loading, error, countLabel = 'required', emptyText = 'No droids needed for this target.' }) {
   if (loading) {
     return (
       <div className="flex flex-col gap-2 px-4">
@@ -22,7 +22,7 @@ export default function DroidList({ droids, loading, error }) {
   if (droids.length === 0) {
     return (
       <div className="mx-4 p-6 text-center text-sw-dim font-rajdhani text-sm">
-        No droids needed for this target.
+        {emptyText}
       </div>
     )
   }
@@ -30,7 +30,7 @@ export default function DroidList({ droids, loading, error }) {
   return (
     <div className="flex flex-col gap-2 px-4">
       <p className="text-[11px] text-sw-muted font-rajdhani uppercase tracking-wider mb-1">
-        {droids.length} droid{droids.length !== 1 ? 's' : ''} required — sorted by first appearance
+        {droids.length} droid{droids.length !== 1 ? 's' : ''} {countLabel}
       </p>
       {droids.map(d => (
         <DroidCard key={d.id} droid={d} />

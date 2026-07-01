@@ -1,8 +1,10 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import { supabase } from './lib/supabase'
-import { RARITY_ORDER, DEFAULT_TARGET, MIN_STEP, MAX_STEP } from './utils/rarity'
+import { RARITY_ORDER, DEFAULT_TARGET, MIN_STEP, MAX_STEP, MIN_CURRENT, DEFAULT_CURRENT } from './utils/rarity'
 import CyclePicker from './components/CyclePicker'
 import TargetStepper from './components/TargetStepper'
+import CurrentStepper from './components/CurrentStepper'
+import ViewToggle from './components/ViewToggle'
 import DroidList from './components/DroidList'
 import SortSearchBar from './components/SortSearchBar'
 import ReferenceDrawer from './components/ReferenceDrawer'
@@ -16,12 +18,14 @@ function readParam(key, fallback, min, max) {
   return fallback
 }
 
-function writeState(cycle, target) {
+function writeState(cycle, target, current) {
   localStorage.setItem('dt_cycle', cycle)
   localStorage.setItem('dt_target', target)
+  localStorage.setItem('dt_current', current)
   const url = new URL(window.location)
   url.searchParams.set('cycle', cycle)
   url.searchParams.set('target', target)
+  url.searchParams.set('current', current)
   window.history.replaceState({}, '', url)
 }
 
@@ -62,26 +66,33 @@ function computeDroidList(allRequirements, target, sort, search) {
 }
 
 export default function App() {
-  const [cycle, setCycleRaw]   = useState(() => readParam('cycle', 1, 1, 4))
-  const [target, setTargetRaw] = useState(() => readParam('target', DEFAULT_TARGET, MIN_STEP, MAX_STEP))
+  const [cycle, setCycleRaw]     = useState(() => readParam('cycle', 1, 1, 4))
+  const [target, setTargetRaw]   = useState(() => readParam('target', DEFAULT_TARGET, MIN_STEP, MAX_STEP))
+  const [current, setCurrentRaw] = useState(() => readParam('current', DEFAULT_CURRENT, MIN_CURRENT, MAX_STEP))
   const [requirements, setRequirements] = useState([])
   const [loading, setLoading]  = useState(true)
   const [error, setError]      = useState(null)
   const [sort, setSort]        = useState('firstStep')
   const [search, setSearch]    = useState('')
   const [refOpen, setRefOpen]  = useState(false)
+  const [view, setView]        = useState('needed')
 
   const setCycle = useCallback((c) => {
     setCycleRaw(c)
-    setTargetRaw(prev => { writeState(c, prev); return prev })
-  }, [])
+    writeState(c, target, current)
+  }, [target, current])
 
   const setTarget = useCallback((t) => {
     setTargetRaw(t)
-    setCycleRaw(prev => { writeState(prev, t); return prev })
-  }, [])
+    writeState(cycle, t, current)
+  }, [cycle, current])
 
-  useEffect(() => { writeState(cycle, target) }, [])
+  const setCurrent = useCallback((cur) => {
+    setCurrentRaw(cur)
+    writeState(cycle, target, cur)
+  }, [cycle, target])
+
+  useEffect(() => { writeState(cycle, target, current) }, [])
 
   useEffect(() => {
     setLoading(true)
@@ -98,10 +109,14 @@ export default function App() {
       })
   }, [cycle])
 
-  const droids = useMemo(
+  const allDroids = useMemo(
     () => computeDroidList(requirements, target, sort, search),
     [requirements, target, sort, search]
   )
+
+  const neededDroids = useMemo(() => allDroids.filter(d => d.lastStep > current), [allDroids, current])
+  const sellDroids   = useMemo(() => allDroids.filter(d => d.lastStep <= current), [allDroids, current])
+  const droids = view === 'needed' ? neededDroids : sellDroids
 
   return (
     <div className="min-h-screen bg-sw-void flex flex-col">
@@ -135,18 +150,24 @@ export default function App() {
       {/* Controls */}
       <div className="max-w-lg mx-auto w-full">
         <div className="pt-4">
-          <CyclePicker cycle={cycle} onChange={c => { setCycle(c); writeState(c, target) }} />
+          <CyclePicker cycle={cycle} onChange={setCycle} />
         </div>
 
         <div className="border-t border-sw-border/50 pt-4">
-          <TargetStepper target={target} onChange={t => { setTarget(t); writeState(cycle, t) }} />
+          <TargetStepper target={target} onChange={setTarget} />
+        </div>
+
+        <div className="border-t border-sw-border/50 pt-4">
+          <CurrentStepper current={current} onChange={setCurrent} />
         </div>
 
         <div className="flex items-center gap-3 px-4 pb-3">
           <div className="flex-1 h-px bg-sw-border" />
-          <span className="text-[10px] font-orbitron text-sw-muted tracking-widest uppercase">Required Droids</span>
+          <span className="text-[10px] font-orbitron text-sw-muted tracking-widest uppercase">Droids</span>
           <div className="flex-1 h-px bg-sw-border" />
         </div>
+
+        <ViewToggle view={view} onChange={setView} neededCount={neededDroids.length} sellCount={sellDroids.length} />
 
         <SortSearchBar sort={sort} onSort={setSort} search={search} onSearch={setSearch} />
       </div>
@@ -154,7 +175,15 @@ export default function App() {
       {/* Droid list */}
       <div className="flex-1 overflow-auto pb-8">
         <div className="max-w-lg mx-auto w-full">
-          <DroidList droids={droids} loading={loading} error={error} />
+          <DroidList
+            droids={droids}
+            loading={loading}
+            error={error}
+            countLabel={view === 'needed' ? 'still needed' : 'ready to sell'}
+            emptyText={view === 'needed'
+              ? 'No droids left to get — everything up to your target is already past its sell point.'
+              : 'Nothing to sell yet — no droids have passed their sell point.'}
+          />
         </div>
       </div>
 

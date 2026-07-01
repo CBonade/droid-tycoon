@@ -56,3 +56,6 @@ export const STEP_COSTS = {
 export const MIN_STEP = 1
 export const MAX_STEP = 23
 export const DEFAULT_TARGET = 20
+
+export const MIN_CURRENT = 0
+export const DEFAULT_CURRENT = 0
