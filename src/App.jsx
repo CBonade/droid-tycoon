@@ -55,7 +55,6 @@ function computeDroidList(allRequirements, target, sort, search) {
 
   list.sort((a, b) => {
     switch (sort) {
-      case 'lastStep':  return a.lastStep  !== b.lastStep  ? a.lastStep  - b.lastStep  : a.name.localeCompare(b.name)
       case 'rarity':    return a.maxRarityRank !== b.maxRarityRank ? b.maxRarityRank - a.maxRarityRank : a.name.localeCompare(b.name)
       case 'name':      return a.name.localeCompare(b.name)
       default:          return a.firstStep !== b.firstStep ? a.firstStep - b.firstStep : a.name.localeCompare(b.name)
