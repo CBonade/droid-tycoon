@@ -13,54 +13,48 @@ const OUTDIR = join(__dir, '..', 'droid-crops')
 
 // ── Grid layout (1055 × 1490px) ─────────────────────────────────────────────
 // Left col  = steps 1-10,  Right col = steps 11-20
-// Beskar   21-22 = bottom-left, 23 = bottom-right
-const GRID_TOP    = 62
-const ROW_H       = 125
-const CELL_W      = 120  // droid image crop width
-const CELL_H      = 90   // droid image crop height (excludes most of the label text)
-const CELL_PAD_Y  = 6    // offset from top of row
+// Beskar: steps 21 (left) + 23 (right) share a row; step 22 (left) is below
+const GRID_TOP  = 62   // y where row 1 starts
+const ROW_H     = 116  // height of each main-grid row
+const CELL_W    = 118
+const CELL_H    = 112  // almost full row height
 
-// x starting positions for each column position (left / right)
+// x start of each droid slot within left / right column
 const COL_X = {
-  left:  [88,  218, 348],
-  right: [615, 745, 875],
+  left:  [85,  215, 347],
+  right: [612, 742, 874],
 }
 
-// Beskar rows are below the 10 main rows
-const BESKAR_TOP = GRID_TOP + 10 * ROW_H + 10
-const BESKAR_H   = 73
+// Beskar section — measured from the image
+const BESKAR_TOP_21 = 1225  // y where step 21 / 23 row starts
+const BESKAR_H_21   = 128   // height of that row
+const BESKAR_TOP_22 = 1360  // y where step 22 row starts
+const BESKAR_H_22   = 98    // height of step 22 row
 
-// Beskar x positions match left/right columns
-// Steps 21-22 are on the left side, step 23 on the right
 function cellCoords(step, pos0) {
   if (step >= 1 && step <= 10) {
     return {
       left: COL_X.left[pos0],
-      top:  GRID_TOP + (step - 1) * ROW_H + CELL_PAD_Y,
+      top:  GRID_TOP + (step - 1) * ROW_H,
       width: CELL_W, height: CELL_H,
     }
   }
   if (step >= 11 && step <= 20) {
     return {
       left: COL_X.right[pos0],
-      top:  GRID_TOP + (step - 11) * ROW_H + CELL_PAD_Y,
+      top:  GRID_TOP + (step - 11) * ROW_H,
       width: CELL_W, height: CELL_H,
     }
   }
-  // Beskar 21-23
-  if (step === 21 || step === 22) {
-    return {
-      left:  COL_X.left[pos0],
-      top:   BESKAR_TOP + (step - 21) * BESKAR_H + CELL_PAD_Y,
-      width: CELL_W, height: BESKAR_H - CELL_PAD_Y,
-    }
+  if (step === 21) {
+    return { left: COL_X.left[pos0],  top: BESKAR_TOP_21, width: CELL_W, height: BESKAR_H_21 }
+  }
+  if (step === 22) {
+    return { left: COL_X.left[pos0],  top: BESKAR_TOP_22, width: CELL_W, height: BESKAR_H_22 }
   }
   if (step === 23) {
-    return {
-      left:  COL_X.right[pos0],
-      top:   BESKAR_TOP + CELL_PAD_Y,
-      width: CELL_W, height: BESKAR_H - CELL_PAD_Y,
-    }
+    // Chips upgrade table starts ~115px into this row on the right, so cap height
+    return { left: COL_X.right[pos0], top: BESKAR_TOP_21, width: CELL_W, height: 112 }
   }
   return null
 }
