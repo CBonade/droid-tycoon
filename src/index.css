@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-sw-void text-white font-rajdhani;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .rainbow-badge {
+    background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #c77dff, #ff6b6b);
+    background-size: 300% 100%;
+    animation: rainbow-shift 3s ease infinite;
+  }
+
+  .beskar-badge {
+    background: linear-gradient(135deg, #94A3B8 0%, #CBD5E1 40%, #94A3B8 60%, #64748B 100%);
+  }
+
+  .scanline-header {
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.015) 2px,
+        rgba(255,255,255,0.015) 4px
+      ),
+      linear-gradient(180deg, #0f0f2e 0%, #0a0a14 100%);
+  }
+
+  .cycle-btn {
+    @apply relative flex flex-col items-center gap-1 px-3 py-2 rounded-lg
+           border border-sw-border bg-sw-surface
+           transition-all duration-200 active:scale-95;
+  }
+
+  .cycle-btn.active {
+    @apply border-sw-gold bg-sw-deep;
+    box-shadow: 0 0 12px rgba(201,168,76,0.35), inset 0 0 20px rgba(201,168,76,0.05);
+  }
+
+  .droid-card {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg
+           border border-sw-border bg-sw-surface;
+  }
+}
+
+@layer utilities {
+  .text-shadow-gold {
+    text-shadow: 0 0 20px rgba(201,168,76,0.6);
+  }
+}
