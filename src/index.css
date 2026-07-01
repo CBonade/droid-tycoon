@@ -53,4 +53,6 @@
   .text-shadow-gold {
     text-shadow: 0 0 20px rgba(201,168,76,0.6);
   }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }
