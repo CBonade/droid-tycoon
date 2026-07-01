@@ -27,7 +27,7 @@ export const RARITY_STYLES = {
     glow:  'shadow-rarity-diamond',
   },
   rainbow: {
-    badge: 'rainbow-badge text-white font-bold shadow-rarity-rainbow',
+    badge: 'rainbow-badge text-gray-900 font-bold shadow-rarity-rainbow',
     glow:  'shadow-rarity-rainbow',
   },
   beskar: {

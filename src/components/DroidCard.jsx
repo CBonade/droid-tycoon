@@ -8,7 +8,7 @@ const RARITY_AVATAR = {
   base:    'bg-gray-700 text-gray-300',
   gold:    'bg-amber-900/60 text-amber-400',
   diamond: 'bg-cyan-900/60 text-cyan-300',
-  rainbow: 'rainbow-badge text-white',
+  rainbow: 'rainbow-badge text-gray-900 [text-shadow:0_1px_2px_rgba(255,255,255,0.4)]',
   beskar:  'beskar-badge text-slate-900',
 }
 
