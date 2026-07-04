@@ -12,8 +12,34 @@ const RARITY_AVATAR = {
   beskar:  'beskar-badge text-slate-900',
 }
 
-export default function DroidCard({ droid }) {
-  const { name, firstStep, lastStep, maxRarity } = droid
+export default function DroidCard({ droid, variant = 'default' }) {
+  if (variant === 'upNext') {
+    const { name, rarity, step } = droid
+    const style = RARITY_STYLES[rarity]
+
+    return (
+      <div className="droid-card">
+        <div className={`w-12 h-12 flex-shrink-0 rounded-lg flex items-center justify-center font-orbitron text-[10px] font-bold border border-sw-border ${RARITY_AVATAR[rarity]}`}>
+          {initials(name)}
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <p className="font-rajdhani font-semibold text-white text-sm leading-tight truncate">
+            {name}
+          </p>
+          <p className="text-[11px] text-sw-dim font-rajdhani mt-0.5">
+            Required for <span className="text-sw-blue">R{step}</span>
+          </p>
+        </div>
+
+        <div className={`flex-shrink-0 px-2.5 py-1 rounded-md text-[11px] font-orbitron ${style.badge}`}>
+          {RARITY_LABEL[rarity]}
+        </div>
+      </div>
+    )
+  }
+
+  const { name, firstStep, lastStep, maxRarity, isNew } = droid
   const style = RARITY_STYLES[maxRarity]
 
   return (
@@ -25,9 +51,16 @@ export default function DroidCard({ droid }) {
 
       {/* Name + meta */}
       <div className="flex-1 min-w-0">
-        <p className="font-rajdhani font-semibold text-white text-sm leading-tight truncate">
-          {name}
-        </p>
+        <div className="flex items-center gap-1.5">
+          <p className="font-rajdhani font-semibold text-white text-sm leading-tight truncate">
+            {name}
+          </p>
+          {isNew && (
+            <span className="flex-shrink-0 px-1.5 py-0.5 rounded text-[9px] font-orbitron font-bold uppercase tracking-wider bg-emerald-500 text-emerald-950">
+              New
+            </span>
+          )}
+        </div>
         <p className="text-[11px] text-sw-dim font-rajdhani mt-0.5">
           First needed: <span className="text-sw-blue">R{firstStep}</span>
         </p>

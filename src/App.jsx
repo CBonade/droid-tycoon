@@ -55,13 +55,22 @@ function computeDroidList(allRequirements, target, sort, search) {
 
   list.sort((a, b) => {
     switch (sort) {
-      case 'rarity':    return a.maxRarityRank !== b.maxRarityRank ? b.maxRarityRank - a.maxRarityRank : a.name.localeCompare(b.name)
-      case 'name':      return a.name.localeCompare(b.name)
-      default:          return a.firstStep !== b.firstStep ? a.firstStep - b.firstStep : a.name.localeCompare(b.name)
+      case 'rarity':     return a.maxRarityRank !== b.maxRarityRank ? b.maxRarityRank - a.maxRarityRank : a.name.localeCompare(b.name)
+      case 'name':       return a.name.localeCompare(b.name)
+      case 'recentSell': return a.lastStep !== b.lastStep ? b.lastStep - a.lastStep : a.name.localeCompare(b.name)
+      default:           return a.firstStep !== b.firstStep ? a.firstStep - b.firstStep : a.name.localeCompare(b.name)
     }
   })
 
   return list
+}
+
+function computeUpNext(allRequirements, current) {
+  const nextStep = current + 1
+  return allRequirements
+    .filter(req => req.step === nextStep)
+    .map(req => ({ id: req.droid.id, name: req.droid.name, rarity: req.rarity, step: nextStep }))
+    .sort((a, b) => a.name.localeCompare(b.name))
 }
 
 export default function App() {
@@ -91,6 +100,11 @@ export default function App() {
     writeState(cycle, target, cur)
   }, [cycle, target])
 
+  const changeView = useCallback((v) => {
+    setView(v)
+    if (v !== 'sell' && sort === 'recentSell') setSort('firstStep')
+  }, [sort])
+
   useEffect(() => { writeState(cycle, target, current) }, [])
 
   useEffect(() => {
@@ -114,8 +128,13 @@ export default function App() {
   )
 
   const neededDroids = useMemo(() => allDroids.filter(d => d.lastStep > current), [allDroids, current])
-  const sellDroids   = useMemo(() => allDroids.filter(d => d.lastStep <= current), [allDroids, current])
-  const droids = view === 'needed' ? neededDroids : sellDroids
+  const sellDroids   = useMemo(
+    () => allDroids.filter(d => d.lastStep <= current).map(d => ({ ...d, isNew: d.lastStep === current })),
+    [allDroids, current]
+  )
+  const upNextDroids = useMemo(() => computeUpNext(requirements, current), [requirements, current])
+
+  const droids = view === 'needed' ? neededDroids : view === 'upNext' ? upNextDroids : sellDroids
 
   return (
     <div className="min-h-screen bg-sw-void flex flex-col">
@@ -166,9 +185,17 @@ export default function App() {
           <div className="flex-1 h-px bg-sw-border" />
         </div>
 
-        <ViewToggle view={view} onChange={setView} neededCount={neededDroids.length} sellCount={sellDroids.length} />
+        <ViewToggle
+          view={view}
+          onChange={changeView}
+          neededCount={neededDroids.length}
+          upNextCount={upNextDroids.length}
+          sellCount={sellDroids.length}
+        />
 
-        <SortSearchBar sort={sort} onSort={setSort} search={search} onSearch={setSearch} />
+        {view !== 'upNext' && (
+          <SortSearchBar sort={sort} onSort={setSort} search={search} onSearch={setSearch} view={view} />
+        )}
       </div>
 
       {/* Droid list */}
@@ -178,10 +205,15 @@ export default function App() {
             droids={droids}
             loading={loading}
             error={error}
-            countLabel={view === 'needed' ? 'still needed' : 'ready to sell'}
-            emptyText={view === 'needed'
-              ? 'No droids left to get — everything up to your target is already past its sell point.'
-              : 'Nothing to sell yet — no droids have passed their sell point.'}
+            variant={view === 'upNext' ? 'upNext' : 'default'}
+            countLabel={view === 'needed' ? 'still needed' : view === 'upNext' ? 'needed for next rebirth' : 'ready to sell'}
+            emptyText={
+              view === 'needed'
+                ? 'No droids left to get — everything up to your target is already past its sell point.'
+                : view === 'upNext'
+                  ? 'Nothing queued — no requirements found for your next rebirth.'
+                  : 'Nothing to sell yet — no droids have passed their sell point.'
+            }
           />
         </div>
       </div>

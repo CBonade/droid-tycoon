@@ -4,7 +4,11 @@ const SORT_OPTIONS = [
   { value: 'name',     label: 'Name' },
 ]
 
-export default function SortSearchBar({ sort, onSort, search, onSearch }) {
+const SELL_SORT_OPTION = { value: 'recentSell', label: 'Recently Sellable' }
+
+export default function SortSearchBar({ sort, onSort, search, onSearch, view }) {
+  const sortOptions = view === 'sell' ? [...SORT_OPTIONS, SELL_SORT_OPTION] : SORT_OPTIONS
+
   return (
     <div className="px-4 pb-3 flex flex-col gap-2">
       {/* Search */}
@@ -33,7 +37,7 @@ export default function SortSearchBar({ sort, onSort, search, onSearch }) {
 
       {/* Sort pills */}
       <div className="flex gap-1.5 overflow-x-auto no-scrollbar">
-        {SORT_OPTIONS.map(o => (
+        {sortOptions.map(o => (
           <button
             key={o.value}
             onClick={() => onSort(o.value)}
