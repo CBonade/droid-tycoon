@@ -4,7 +4,7 @@ Mobile-first PWA for planning Super Rebirth targets in Star Wars: Droid Tycoon (
 
 ## Stack
 
-- **Frontend**: React + Vite 7 + Tailwind CSS, deployed to Netlify (auto-deploy on push to main)
+- **Frontend**: React + Vite 7 + Tailwind CSS, deployed to both Netlify and Vercel (both auto-deploy on push to main — Netlify via its GitHub App, Vercel via its own Git integration; kept in parallel, Netlify not yet decommissioned)
 - **Backend**: Supabase (Postgres + RLS, no auth) — shared project `bbfnwswogaesrpifuoht` with sprite-tracker
 - **Repo**: github.com/CBonade/droid-tycoon (commit directly to main, no branches/PRs)
 
@@ -39,10 +39,23 @@ No auth — both tables have RLS enabled with a public SELECT policy.
 
 ## How the app works
 
-- **Cycle picker** (1–4): identifies which Super Rebirth cycle the user is in via their Rebirth 1 droid trio
-- **Target stepper**: sets the planned Super Rebirth step (min 1, max 23 currently)
-- **Droid list**: each droid shown once, sorted by first appearance step, with the highest rarity needed up to the target and the last step they're needed (safe-to-sell point)
-- State lives in URL params (`?cycle=2&target=20`) + localStorage — no login required, links are shareable
+- **Cycle picker** (1–4): identifies which Super Rebirth cycle the user is in by matching their Rebirth 1 droid trio against `CYCLE_IDENTIFIERS` in `src/utils/rarity.js`
+- **Target stepper**: the Super Rebirth step the user is planning toward (min 1, max 23 currently, `MAX_STEP` in `rarity.js`). Displays the credits required at that step from `STEP_COSTS`
+- **Current stepper**: the step the user is *actually* at right now (separate from target) — min 0, same max as target
+- **Droid list**: computed from `droid_tycoon_requirements` filtered to `step <= target`, grouped per droid. Each droid shows its first-appearance step, its highest rarity needed up to the target, and its last-needed step (the "safe to sell" point)
+- **View toggle**: "Still Needed" (droids whose last-needed step is still ahead of `current`) vs "Ready to Sell" (droids whose last-needed step is already behind `current`) — this is what the Current stepper actually drives
+- **Sort/search**: sort by first-needed step (default), rarity, or name; free-text name search
+- **Reference Drawer** (swipe-up panel, opened via the header's REF button) — static lookup tables, not tied to any specific droid or DB row (see "Reference data" below)
+- State (cycle, target, current) lives in URL params (`?cycle=2&target=20&current=14`) + localStorage (`dt_` prefix) — no login required, links are shareable
+
+## Reference data (chip economy & Super Rebirth rewards)
+
+All of this lives hardcoded in `src/components/ReferenceDrawer.jsx` — it is general game reference info, not derived from the database. Update it there directly when Epic changes these numbers; there is no ingestion script for it.
+
+- **Super Rebirth Rewards** (`SRB_REWARDS`): per Rebirth level 12–27, the crystal reward and the credit/XP multiplier bonuses earned.
+- **Chip Upgrade Costs** (`CHIP_UPGRADE_COSTS`) and **Chip Sell Values** (`CHIP_SELL_VALUES`): chips needed to upgrade a droid slot to a given rarity, and chips earned when selling a droid, broken out by droid **class** (Common/Rare/Epic/Legendary) × rarity tier (gold/diamond/rainbow/beskar).
+
+**Important distinction**: droid "class" (Common/Rare/Epic/Legendary) used here is a *different* axis from `rarity` (base/gold/diamond/rainbow/beskar) used in `droid_tycoon_requirements` and the droid list. Class is not a column anywhere in the schema (`droid_tycoon_droids` only has `id`/`name`/`image_url`) — it only exists as a classification inside this static reference table. Don't assume a missing `class` column needs to be backfilled; the chip tables are intentionally general-purpose reference data, independent of any specific droid.
 
 ## Adding droid images
 
@@ -61,9 +74,9 @@ Also update `MAX_STEP` in `src/utils/rarity.js` and add the new cost to `STEP_CO
 
 ## Deployment
 
-Push to main → Netlify builds and deploys automatically.
+Push to main → both Netlify and Vercel build and deploy automatically in parallel (each has its own Git integration connected to this repo). Netlify is kept live as a fallback; Vercel is the actively-used deployment.
 
-Set these env vars in the Netlify dashboard (Settings → Environment variables):
+Set these env vars in **both** dashboards (Netlify: Settings → Environment variables; Vercel: Project → Settings → Environment Variables):
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
 
