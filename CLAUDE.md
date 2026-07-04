@@ -4,7 +4,7 @@ Mobile-first PWA for planning Super Rebirth targets in Star Wars: Droid Tycoon (
 
 ## Stack
 
-- **Frontend**: React + Vite 7 + Tailwind CSS, deployed to both Netlify and Vercel (both auto-deploy on push to main — Netlify via its GitHub App, Vercel via its own Git integration; kept in parallel, Netlify not yet decommissioned)
+- **Frontend**: React + Vite 7 + Tailwind CSS, deployed to Vercel (auto-deploy on push to main)
 - **Backend**: Supabase (Postgres + RLS, no auth) — shared project `bbfnwswogaesrpifuoht` with sprite-tracker
 - **Repo**: github.com/CBonade/droid-tycoon (commit directly to main, no branches/PRs)
 
@@ -74,9 +74,9 @@ Also update `MAX_STEP` in `src/utils/rarity.js` and add the new cost to `STEP_CO
 
 ## Deployment
 
-Push to main → both Netlify and Vercel build and deploy automatically in parallel (each has its own Git integration connected to this repo). Netlify is kept live as a fallback; Vercel is the actively-used deployment.
+Push to main → Vercel builds and deploys automatically.
 
-Set these env vars in **both** dashboards (Netlify: Settings → Environment variables; Vercel: Project → Settings → Environment Variables):
+Set these env vars in the Vercel dashboard (Project → Settings → Environment Variables):
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
 
