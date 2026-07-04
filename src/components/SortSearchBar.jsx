@@ -19,7 +19,7 @@ export default function SortSearchBar({ sort, onSort, search, onSearch, view }) 
           onChange={e => onSearch(e.target.value)}
           placeholder="Search droids…"
           className="w-full bg-sw-deep border border-sw-border rounded-lg pl-3 pr-9 py-2
-                     text-sm font-rajdhani text-white placeholder:text-sw-muted
+                     text-base font-rajdhani text-white placeholder:text-sw-muted
                      focus:outline-none focus:border-sw-gold/60
                      [&::-webkit-search-cancel-button]:appearance-none"
         />
