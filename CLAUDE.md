@@ -16,7 +16,11 @@ VITE_SUPABASE_URL=https://bbfnwswogaesrpifuoht.supabase.co
 VITE_SUPABASE_ANON_KEY=<anon key — same as sprite-tracker>
 ```
 
-`VITE_` vars are baked into the client bundle at build time. Netlify env var changes require a redeploy.
+`VITE_` vars are baked into the client bundle at build time. Vercel env var changes require a redeploy.
+
+## Schema changes
+
+Shares its Supabase project (`bbfnwswogaesrpifuoht`) with sprite-tracker. For schema changes (new tables/columns/constraints), use the Supabase Management API via the CLI rather than the SQL editor — see sprite-tracker's `CLAUDE.md` "Schema changes" section for the exact steps and the Keychain PAT entry (`cc/personal/supabase/bbfnwswogaesrpifuoht-pat`) shared across both projects.
 
 ## Data model
 
