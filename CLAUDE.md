@@ -88,9 +88,12 @@ Set these env vars in the Vercel dashboard (Project → Settings → Environment
 
 ## Releases
 
-Tag and release on GitHub when asked:
+Every time a batch is pushed (see the push-batching note above), tag a release and publish notes — this is routine, not something that waits for the user to ask. Use semantic versioning: bump minor for new features, patch for fixes/docs-only batches. Generate notes as a short bullet list from the commits since the last tag (`git log <last-tag>..HEAD --oneline`), grouped by feature/fix, not a raw commit dump. No tags exist yet as of 2026-07-09 — the first push under this convention starts at v0.1.0.
+
 ```bash
 git tag v0.1.0
 git push origin v0.1.0
 gh release create v0.1.0 --title "v0.1.0" --notes "..."
 ```
+
+No in-app release-notes display yet — that's deferred to a future iteration. For now this is purely the tag + GitHub release.
