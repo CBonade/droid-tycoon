@@ -102,8 +102,9 @@ export default function App() {
 
   const changeView = useCallback((v) => {
     setView(v)
-    if (v !== 'sell' && sort === 'recentSell') setSort('firstStep')
-  }, [sort])
+    if (v === 'sell' && view !== 'sell') setSort('recentSell')
+    else if (v !== 'sell' && sort === 'recentSell') setSort('firstStep')
+  }, [view, sort])
 
   useEffect(() => { writeState(cycle, target, current) }, [])
 
