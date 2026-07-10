@@ -84,6 +84,8 @@ Set these env vars in the Vercel dashboard (Project → Settings → Environment
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
 
+**Commit per feature as usual, but do not push after every commit.** Vercel's free tier caps monthly deploys, and this project (and sprite-tracker, on the same plan) blew through that cap in under 2 days when every commit auto-deployed. Batch commits locally and push only once a full round of work is ready to ship, then push everything together in one go (multiple commits in that push is fine — each commit should still represent one feature/fix, per normal commit hygiene).
+
 ## Releases
 
 Tag and release on GitHub when asked:
