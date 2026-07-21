@@ -44,10 +44,13 @@ No auth — both tables have RLS enabled with a public SELECT policy.
 ## How the app works
 
 - **Cycle picker** (1–4): identifies which Super Rebirth cycle the user is in by matching their Rebirth 1 droid trio against `CYCLE_IDENTIFIERS` in `src/utils/rarity.js`
-- **Target stepper**: the Super Rebirth step the user is planning toward (min 1, max 23 currently, `MAX_STEP` in `rarity.js`). Displays the credits required at that step from `STEP_COSTS`
+- **Target stepper**: the Super Rebirth step the user is planning toward (min 1, max 27 currently, `MAX_STEP` in `rarity.js`). Displays the credits required at that step from `STEP_COSTS`
 - **Current stepper**: the step the user is *actually* at right now (separate from target) — min 0, same max as target
 - **Droid list**: computed from `droid_tycoon_requirements` filtered to `step <= target`, grouped per droid. Each droid shows its first-appearance step, its highest rarity needed up to the target, and its last-needed step (the "safe to sell" point)
-- **View toggle**: "Still Needed" (droids whose last-needed step is still ahead of `current`) vs "Ready to Sell" (droids whose last-needed step is already behind `current`) — this is what the Current stepper actually drives
+- **View toggle** — three tabs, all driven by the **Current** stepper (each tab shows a live count):
+  - **Still Needed** (`needed`): droids still required to reach your **Target** — last-needed step is still ahead of current (`lastStep > current`). Each row shows the **highest rarity** needed for that droid across every step up to Target (`maxRarity`).
+  - **Up Next** (`upNext`): the exact droids + rarities required at your **next** rebirth only (`step === current + 1`), sorted by name. Independent of Target, and it **hides the sort/search bar** (uses the `upNext` card variant).
+  - **Ready to Sell** (`sell`): droids no longer needed at current progress (`lastStep <= current`, within the Target range). Droids that became sellable *exactly at* current are flagged **new** (`isNew`); switching to this tab defaults the sort to newest-sellable-first (`recentSell` / "Recently Sellable", a sort option that only appears on this tab).
 - **Sort/search**: sort by first-needed step (default), rarity, or name; free-text name search
 - **Reference Drawer** (swipe-up panel, opened via the header's REF button) — static lookup tables, not tied to any specific droid or DB row (see "Reference data" below)
 - State (cycle, target, current) lives in URL params (`?cycle=2&target=20&current=14`) + localStorage (`dt_` prefix) — no login required, links are shareable
