@@ -1,18 +1,20 @@
 import { useEffect } from 'react'
 
-const DROID_CLASSES = ['Common', 'Rare', 'Epic', 'Legendary']
+const DROID_CLASSES = ['Common', 'Rare', 'Epic', 'Legendary', 'Mythic']
 const CLASS_COLOR = {
   Common:    'text-gray-400',
   Rare:      'text-blue-400',
   Epic:      'text-purple-400',
   Legendary: 'text-amber-400',
+  Mythic:    'text-rose-400',
 }
 
 const CHIP_UPGRADE_COSTS = {
-  Common:    { gold: 5,   diamond: 10,   rainbow: 15,   beskar: 80 },
-  Rare:      { gold: 30,  diamond: 50,   rainbow: 75,   beskar: 250 },
-  Epic:      { gold: 120, diamond: 180,  rainbow: 240,  beskar: 5000 },
-  Legendary: { gold: 400, diamond: 1200, rainbow: 4000, beskar: 12000 },
+  Common:    { gold: 10,   diamond: 25,    rainbow: 40,    beskar: 80 },
+  Rare:      { gold: 30,   diamond: 60,    rainbow: 100,   beskar: 250 },
+  Epic:      { gold: 120,  diamond: 180,   rainbow: 240,   beskar: 5000 },
+  Legendary: { gold: 400,  diamond: 1200,  rainbow: 4000,  beskar: 12000 },
+  Mythic:    { gold: 6000, diamond: 13000, rainbow: 30000, beskar: 75000 },
 }
 
 const CHIP_SELL_VALUES = {
@@ -62,7 +64,7 @@ function ChipTable({ data, note }) {
           <span className="text-center text-pink-400">Rain</span>
           <span className="text-center text-slate-300">Besk</span>
         </div>
-        {DROID_CLASSES.map((cls, i) => (
+        {DROID_CLASSES.filter(cls => data[cls]).map((cls, i) => (
           <div key={cls} className={`grid grid-cols-5 px-3 py-2.5 ${i % 2 === 0 ? 'bg-sw-void' : 'bg-sw-deep'}`}>
             <span className={`font-semibold ${CLASS_COLOR[cls]}`}>{cls}</span>
             <span className="text-center text-white">{data[cls].gold.toLocaleString()}</span>
