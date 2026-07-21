@@ -60,9 +60,9 @@ No auth — both tables have RLS enabled with a public SELECT policy.
 All of this lives hardcoded in `src/components/ReferenceDrawer.jsx` — it is general game reference info, not derived from the database. Update it there directly when Epic changes these numbers; there is no ingestion script for it.
 
 - **Super Rebirth Rewards** (`SRB_REWARDS`): per Rebirth level 12–27, the crystal reward and the credit/XP multiplier bonuses earned.
-- **Chip Upgrade Costs** (`CHIP_UPGRADE_COSTS`) and **Chip Sell Values** (`CHIP_SELL_VALUES`): chips needed to upgrade a droid slot to a given rarity, and chips earned when selling a droid, broken out by droid **class** (Common/Rare/Epic/Legendary) × rarity tier (gold/diamond/rainbow/beskar).
+- **Chip Upgrade Costs** (`CHIP_UPGRADE_COSTS`) and **Chip Sell Values** (`CHIP_SELL_VALUES`): chips needed to upgrade a droid slot to a given rarity, and chips earned when selling a droid, broken out by droid **class** × rarity tier (gold/diamond/rainbow/beskar). Upgrade costs cover five classes (Common/Rare/Epic/Legendary/**Mythic**); sell values currently cover only the first four — Mythic sell values are not yet known and are omitted until sourced. The `ChipTable` renderer draws one row per class present in each table's data, so the two tables can carry different class sets without breaking.
 
-**Important distinction**: droid "class" (Common/Rare/Epic/Legendary) used here is a *different* axis from `rarity` (base/gold/diamond/rainbow/beskar) used in `droid_tycoon_requirements` and the droid list. Class is not a column anywhere in the schema (`droid_tycoon_droids` only has `id`/`name`/`image_url`) — it only exists as a classification inside this static reference table. Don't assume a missing `class` column needs to be backfilled; the chip tables are intentionally general-purpose reference data, independent of any specific droid.
+**Important distinction**: droid "class" (Common/Rare/Epic/Legendary/Mythic) used here is a *different* axis from `rarity` (base/gold/diamond/rainbow/beskar) used in `droid_tycoon_requirements` and the droid list. Class is not a column anywhere in the schema (`droid_tycoon_droids` only has `id`/`name`/`image_url`) — it only exists as a classification inside this static reference table. Don't assume a missing `class` column needs to be backfilled; the chip tables are intentionally general-purpose reference data, independent of any specific droid.
 
 ## Adding droid images
 
@@ -100,3 +100,15 @@ gh release create v0.1.0 --title "v0.1.0" --notes "..."
 ```
 
 No in-app release-notes display yet — that's deferred to a future iteration. For now this is purely the tag + GitHub release.
+
+## Future features (planned, not yet built)
+
+### Iconic droid income optimizer
+Guidance for when adding "iconic" droids maximizes total income.
+
+- The base has a limited number of droid slots — believed to be **~25** total (needs confirmation).
+- Most droids give a flat credits/second income. **Iconic** droids instead give a **percentage of your total income from all other droids** — either **15%** or **25%** per iconic.
+- Because iconics are percentage-based, they're weak when your flat-income base is small. After a Super Rebirth wipe you start with only a few slots, so filling too many with iconics *lowers* total income versus flat-income droids. As you add more (and higher-value) flat droids, each iconic's percentage cut grows, so there's a crossover point where an iconic beats the best flat droid you could slot instead.
+- Goal: given current slot count and income mix, tell the player when each iconic is worth slotting for maximum income (and how many iconics is optimal).
+- Likely requires per-droid income values, which may be hard to source; also needs the confirmed slot count and the list of iconic droids and their percentages.
+- Status: concept only. No research done yet (slot count, income values, iconic roster all TBD).
