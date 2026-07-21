@@ -49,12 +49,13 @@ export const STEP_COSTS = {
   9: '89M',   10: '220M', 11: '550M', 12: '1.36B',
   13: '3.4B', 14: '8.45B',15: '21B',  16: '52B',
   17: '130B', 18: '325B', 19: '810B', 20: '2T',
-  21: '3T',   22: '4.5T', 23: '6T',
+  21: '3T',   22: '4.5T', 23: '6T',   24: '9T',
+  25: '13.5T',26: '21T',  27: '32T',
 }
 
 
 export const MIN_STEP = 1
-export const MAX_STEP = 23
+export const MAX_STEP = 27
 export const DEFAULT_TARGET = 20
 
 export const MIN_CURRENT = 0
