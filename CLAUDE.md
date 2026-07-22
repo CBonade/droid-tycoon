@@ -20,7 +20,7 @@ VITE_SUPABASE_ANON_KEY=<anon key — same as sprite-tracker>
 
 ## Schema changes
 
-Shares its Supabase project (`bbfnwswogaesrpifuoht`) with sprite-tracker. For schema changes (new tables/columns/constraints), use the Supabase Management API via the CLI rather than the SQL editor — see sprite-tracker's `CLAUDE.md` "Schema changes" section for the exact steps and the Keychain PAT entry (`cc/personal/supabase/bbfnwswogaesrpifuoht-pat`) shared across both projects.
+Shares its Supabase project (`bbfnwswogaesrpifuoht`) with sprite-tracker. For schema **and data** changes (new tables/columns/constraints, or bulk requirement edits), run SQL against the Supabase Management API query endpoint, authenticated with the Supabase CLI login token (`npx supabase login`) — sprite-tracker's `CLAUDE.md` "Schema changes" section is the canonical write-path doc for the shared project and has the exact steps.
 
 ## Data model
 
