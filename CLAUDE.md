@@ -28,7 +28,7 @@ All tables are prefixed `droid_tycoon_` to avoid collisions with sprite-tracker.
 
 **`droid_tycoon_droids`**: `id`, `name` (unique), `image_url` (nullable)
 
-**`droid_tycoon_requirements`**: `id`, `cycle` (1–4), `step` (1–27), `droid_id` → droids, `rarity` (base/gold/diamond/rainbow/beskar)
+**`droid_tycoon_requirements`**: `id`, `cycle` (1–5), `step` (1–35), `droid_id` → droids, `rarity` (base/gold/diamond/rainbow/beskar/galactic/stellar)
 
 No auth — both tables have RLS enabled with a public SELECT policy.
 
@@ -43,8 +43,8 @@ No auth — both tables have RLS enabled with a public SELECT policy.
 
 ## How the app works
 
-- **Cycle picker** (1–4): identifies which Super Rebirth cycle the user is in by matching their Rebirth 1 droid trio against `CYCLE_IDENTIFIERS` in `src/utils/rarity.js`
-- **Target stepper**: the Super Rebirth step the user is planning toward (min 1, max 27 currently, `MAX_STEP` in `rarity.js`). Displays the credits required at that step from `STEP_COSTS`
+- **Cycle picker** (1–5): identifies which Super Rebirth cycle the user is in by matching their Rebirth 1 droid trio against `CYCLE_IDENTIFIERS` in `src/utils/rarity.js`. Cycles 2 and 5 share the same Rebirth 1 trio (ID10/MOUSE/GONK) — `CYCLE_TIEBREAKERS` supplies a distinguishing Rebirth 2 droid shown on those two buttons
+- **Target stepper**: the Super Rebirth step the user is planning toward (min 1, max 35 currently, `MAX_STEP` in `rarity.js`). Displays the credits required at that step from `STEP_COSTS`
 - **Current stepper**: the step the user is *actually* at right now (separate from target) — min 0, same max as target
 - **Droid list**: computed from `droid_tycoon_requirements` filtered to `step <= target`, grouped per droid. Each droid shows its first-appearance step, its highest rarity needed up to the target, and its last-needed step (the "safe to sell" point)
 - **View toggle** — three tabs, all driven by the **Current** stepper (each tab shows a live count):
@@ -59,10 +59,10 @@ No auth — both tables have RLS enabled with a public SELECT policy.
 
 All of this lives hardcoded in `src/components/ReferenceDrawer.jsx` — it is general game reference info, not derived from the database. Update it there directly when Epic changes these numbers; there is no ingestion script for it.
 
-- **Super Rebirth Rewards** (`SRB_REWARDS`): per Rebirth level 12–27, the crystal reward and the credit/XP multiplier bonuses earned.
-- **Chip Upgrade Costs** (`CHIP_UPGRADE_COSTS`) and **Chip Sell Values** (`CHIP_SELL_VALUES`): chips needed to upgrade a droid slot to a given rarity, and chips earned when selling a droid, broken out by droid **class** × rarity tier (gold/diamond/rainbow/beskar). Upgrade costs cover five classes (Common/Rare/Epic/Legendary/**Mythic**); sell values currently cover only the first four — Mythic sell values are not yet known and are omitted until sourced. The `ChipTable` renderer draws one row per class present in each table's data, so the two tables can carry different class sets without breaking.
+- **Super Rebirth Rewards** (`SRB_REWARDS`): per Rebirth level 12–30, the crystal reward and the credit/XP multiplier bonuses earned. Rewards for 31–35 are not yet publicly documented — add them when sourced.
+- **Chip Upgrade Costs** (`CHIP_UPGRADE_COSTS`) and **Chip Sell Values** (`CHIP_SELL_VALUES`): chips needed to upgrade a droid slot to a given rarity, and chips earned when selling a droid, broken out by droid **class** × rarity tier (gold/diamond/rainbow/beskar). Upgrade costs cover five classes (Common/Rare/Epic/Legendary/**Mythic**); sell values currently cover only the first four — Mythic sell values are not yet known and are omitted until sourced. Both tables currently stop at the beskar tier: per-class chip costs/sell values for the **galactic** and **stellar** tiers are not yet sourced either. The `ChipTable` renderer draws one row per class present in each table's data, so the two tables can carry different class sets without breaking.
 
-**Important distinction**: droid "class" (Common/Rare/Epic/Legendary/Mythic) used here is a *different* axis from `rarity` (base/gold/diamond/rainbow/beskar) used in `droid_tycoon_requirements` and the droid list. Class is not a column anywhere in the schema (`droid_tycoon_droids` only has `id`/`name`/`image_url`) — it only exists as a classification inside this static reference table. Don't assume a missing `class` column needs to be backfilled; the chip tables are intentionally general-purpose reference data, independent of any specific droid.
+**Important distinction**: droid "class" (Common/Rare/Epic/Legendary/Mythic) used here is a *different* axis from `rarity` (base/gold/diamond/rainbow/beskar/galactic/stellar) used in `droid_tycoon_requirements` and the droid list. Class is not a column anywhere in the schema (`droid_tycoon_droids` only has `id`/`name`/`image_url`) — it only exists as a classification inside this static reference table. Don't assume a missing `class` column needs to be backfilled; the chip tables are intentionally general-purpose reference data, independent of any specific droid.
 
 ## Adding droid images
 
