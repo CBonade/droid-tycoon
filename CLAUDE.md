@@ -74,7 +74,7 @@ UPDATE droid_tycoon_droids SET image_url = '/droids/<slug>.png' WHERE name = '<n
 
 New files need a deploy (push) to go live; the SQL change itself does not.
 
-Absolute external URLs also work in `image_url`, but avoid hotlinking Fandom — its CDN returns a 404 placeholder to requests with a foreign `Referer` (DroidCard's `<img>` sets `referrerPolicy="no-referrer"` as a workaround, but self-hosting is the convention). Current portraits came from the game's community wiki (`star-wars-droid-tycoon.fandom.com`) via the MediaWiki `pageimages` API; as of 2026-08-21 only 22 of 62 droids have published art there — the rest fall back to an initials avatar until art surfaces.
+Absolute external URLs also work in `image_url`, but avoid hotlinking Fandom — its CDN returns a 404 placeholder to requests with a foreign `Referer` (DroidCard's `<img>` sets `referrerPolicy="no-referrer"` as a workaround, but self-hosting is the convention). Current portraits came from two Fandom wikis via the MediaWiki API: the game's own wiki (`star-wars-droid-tycoon.fandom.com`, `pageimages` on droid pages) and Wookieepedia's [Images from Star Wars: Droid Tycoon category](https://starwars.fandom.com/wiki/Category:Images_from_Star_Wars:_Droid_Tycoon) (`*-Fortnite.png` files). As of 2026-08-21, 39 of 62 droids have published art between them — the rest fall back to an initials avatar until art surfaces; re-check both sources when new droids get pages.
 
 ## Updating game data (new rebirth steps added by Epic)
 
