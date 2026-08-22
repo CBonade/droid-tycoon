@@ -66,12 +66,15 @@ All of this lives hardcoded in `src/components/ReferenceDrawer.jsx` — it is ge
 
 ## Adding droid images
 
-Run a SQL update against `droid_tycoon_droids`:
+Droid portraits are **self-hosted** in `public/droids/<slug>.png` (slug = droid name lowercased, runs of non-alphanumerics → `-`, e.g. `DRK-1 PROBE` → `drk-1-probe.png`). `image_url` in `droid_tycoon_droids` stores the relative path (`/droids/<slug>.png`), which the client resolves against its own origin. To add an image: commit the file (256px-wide is the convention), then
+
 ```sql
-UPDATE droid_tycoon_droids SET image_url = '<url>' WHERE name = '<name>';
+UPDATE droid_tycoon_droids SET image_url = '/droids/<slug>.png' WHERE name = '<name>';
 ```
 
-Images are fetched and cached by the client. No redeploy needed.
+New files need a deploy (push) to go live; the SQL change itself does not.
+
+Absolute external URLs also work in `image_url`, but avoid hotlinking Fandom — its CDN returns a 404 placeholder to requests with a foreign `Referer` (DroidCard's `<img>` sets `referrerPolicy="no-referrer"` as a workaround, but self-hosting is the convention). Current portraits came from the game's community wiki (`star-wars-droid-tycoon.fandom.com`) via the MediaWiki `pageimages` API; as of 2026-08-21 only 22 of 62 droids have published art there — the rest fall back to an initials avatar until art surfaces.
 
 ## Updating game data (new rebirth steps added by Epic)
 
