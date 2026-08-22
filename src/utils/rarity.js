@@ -1,4 +1,4 @@
-export const RARITY_ORDER = ['base', 'gold', 'diamond', 'rainbow', 'beskar']
+export const RARITY_ORDER = ['base', 'gold', 'diamond', 'rainbow', 'beskar', 'galactic', 'stellar']
 
 export function maxRarity(rarities) {
   const best = Math.max(...rarities.map(r => RARITY_ORDER.indexOf(r)))
@@ -11,6 +11,8 @@ export const RARITY_LABEL = {
   diamond: 'Diamond',
   rainbow: 'Rainbow',
   beskar:  'Beskar',
+  galactic: 'Galactic',
+  stellar:  'Stellar',
 }
 
 export const RARITY_STYLES = {
@@ -34,6 +36,14 @@ export const RARITY_STYLES = {
     badge: 'beskar-badge text-slate-900 font-bold shadow-rarity-beskar',
     glow:  'shadow-rarity-beskar',
   },
+  galactic: {
+    badge: 'galactic-badge text-white font-bold shadow-rarity-galactic',
+    glow:  'shadow-rarity-galactic',
+  },
+  stellar: {
+    badge: 'stellar-badge text-amber-950 font-bold shadow-rarity-stellar',
+    glow:  'shadow-rarity-stellar',
+  },
 }
 
 export const CYCLE_IDENTIFIERS = {
@@ -41,6 +51,13 @@ export const CYCLE_IDENTIFIERS = {
   2: ['MOUSE', 'GONK', 'ID10'],
   3: ['MOUSE', 'PIT', 'GONK'],
   4: ['ID10', 'PIT', 'DRK-1 PROBE'],
+  5: ['ID10', 'MOUSE', 'GONK'],
+}
+
+// Cycles 2 and 5 share the same Rebirth 1 trio — the Rebirth 2 droids tell them apart.
+export const CYCLE_TIEBREAKERS = {
+  2: 'R2: SENATE HOVERCAM',
+  5: 'R2: IMPERIAL PROBE',
 }
 
 export const STEP_COSTS = {
@@ -50,12 +67,15 @@ export const STEP_COSTS = {
   13: '3.4B', 14: '8.45B',15: '21B',  16: '52B',
   17: '130B', 18: '325B', 19: '810B', 20: '2T',
   21: '3T',   22: '4.5T', 23: '6T',   24: '9T',
-  25: '13.5T',26: '21T',  27: '32T',
+  25: '13.5T',26: '21T',  27: '32T',  28: '45T',
+  29: '68T',  30: '100T', 31: '150T', 32: '230T',
+  33: '345T', 34: '520T', 35: '778T',
 }
 
 
 export const MIN_STEP = 1
-export const MAX_STEP = 27
+export const MAX_CYCLE = 5
+export const MAX_STEP = 35
 export const DEFAULT_TARGET = 20
 
 export const MIN_CURRENT = 0

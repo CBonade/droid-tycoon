@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import { supabase } from './lib/supabase'
-import { RARITY_ORDER, DEFAULT_TARGET, MIN_STEP, MAX_STEP, MIN_CURRENT, DEFAULT_CURRENT } from './utils/rarity'
+import { RARITY_ORDER, DEFAULT_TARGET, MIN_STEP, MAX_STEP, MAX_CYCLE, MIN_CURRENT, DEFAULT_CURRENT } from './utils/rarity'
 import CyclePicker from './components/CyclePicker'
 import TargetStepper from './components/TargetStepper'
 import CurrentStepper from './components/CurrentStepper'
@@ -74,7 +74,7 @@ function computeUpNext(allRequirements, current) {
 }
 
 export default function App() {
-  const [cycle, setCycleRaw]     = useState(() => readParam('cycle', 1, 1, 4))
+  const [cycle, setCycleRaw]     = useState(() => readParam('cycle', 1, 1, MAX_CYCLE))
   const [target, setTargetRaw]   = useState(() => readParam('target', DEFAULT_TARGET, MIN_STEP, MAX_STEP))
   const [current, setCurrentRaw] = useState(() => readParam('current', DEFAULT_CURRENT, MIN_CURRENT, MAX_STEP))
   const [requirements, setRequirements] = useState([])

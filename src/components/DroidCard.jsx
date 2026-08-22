@@ -10,6 +10,8 @@ const RARITY_AVATAR = {
   diamond: 'bg-cyan-900/60 text-cyan-300',
   rainbow: 'rainbow-badge text-gray-900 [text-shadow:0_1px_2px_rgba(255,255,255,0.4)]',
   beskar:  'beskar-badge text-slate-900',
+  galactic: 'galactic-badge text-white',
+  stellar:  'stellar-badge text-amber-950',
 }
 
 export default function DroidCard({ droid, variant = 'default' }) {
