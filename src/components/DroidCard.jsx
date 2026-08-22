@@ -1,7 +1,31 @@
+import { useState } from 'react'
 import { RARITY_LABEL, RARITY_STYLES } from '../utils/rarity'
 
 function initials(name) {
   return name.replace(/[^A-Z0-9]/gi, '').slice(0, 3).toUpperCase()
+}
+
+function Avatar({ name, imageUrl, rarity }) {
+  const [loaded, setLoaded] = useState(false)
+  const [failed, setFailed] = useState(false)
+  const showImage = imageUrl && !failed
+
+  return (
+    <div className={`relative w-12 h-12 flex-shrink-0 rounded-lg flex items-center justify-center font-orbitron text-[10px] font-bold border border-sw-border overflow-hidden ${RARITY_AVATAR[rarity]}`}>
+      {!(showImage && loaded) && initials(name)}
+      {showImage && (
+        <img
+          src={imageUrl}
+          alt={name}
+          loading="lazy"
+          referrerPolicy="no-referrer"
+          className="absolute inset-0 w-full h-full object-contain"
+          onLoad={() => setLoaded(true)}
+          onError={() => setFailed(true)}
+        />
+      )}
+    </div>
+  )
 }
 
 const RARITY_AVATAR = {
@@ -16,14 +40,12 @@ const RARITY_AVATAR = {
 
 export default function DroidCard({ droid, variant = 'default' }) {
   if (variant === 'upNext') {
-    const { name, rarity, step } = droid
+    const { name, imageUrl, rarity, step } = droid
     const style = RARITY_STYLES[rarity]
 
     return (
       <div className="droid-card">
-        <div className={`w-12 h-12 flex-shrink-0 rounded-lg flex items-center justify-center font-orbitron text-[10px] font-bold border border-sw-border ${RARITY_AVATAR[rarity]}`}>
-          {initials(name)}
-        </div>
+        <Avatar name={name} imageUrl={imageUrl} rarity={rarity} />
 
         <div className="flex-1 min-w-0">
           <p className="font-rajdhani font-semibold text-white text-sm leading-tight truncate">
@@ -41,15 +63,12 @@ export default function DroidCard({ droid, variant = 'default' }) {
     )
   }
 
-  const { name, firstStep, lastStep, maxRarity, isNew } = droid
+  const { name, imageUrl, firstStep, lastStep, maxRarity, isNew } = droid
   const style = RARITY_STYLES[maxRarity]
 
   return (
     <div className="droid-card">
-      {/* Avatar */}
-      <div className={`w-12 h-12 flex-shrink-0 rounded-lg flex items-center justify-center font-orbitron text-[10px] font-bold border border-sw-border ${RARITY_AVATAR[maxRarity]}`}>
-        {initials(name)}
-      </div>
+      <Avatar name={name} imageUrl={imageUrl} rarity={maxRarity} />
 
       {/* Name + meta */}
       <div className="flex-1 min-w-0">

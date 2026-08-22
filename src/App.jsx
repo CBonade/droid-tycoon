@@ -34,11 +34,11 @@ function computeDroidList(allRequirements, target, sort, search) {
 
   for (const req of allRequirements) {
     if (req.step > target) continue
-    const { id, name } = req.droid
+    const { id, name, image_url: imageUrl } = req.droid
     const rarityRank = RARITY_ORDER.indexOf(req.rarity)
 
     if (!byDroid.has(id)) {
-      byDroid.set(id, { id, name, firstStep: req.step, lastStep: req.step, maxRarityRank: rarityRank })
+      byDroid.set(id, { id, name, imageUrl, firstStep: req.step, lastStep: req.step, maxRarityRank: rarityRank })
     } else {
       const entry = byDroid.get(id)
       if (req.step > entry.lastStep) entry.lastStep = req.step
@@ -69,7 +69,7 @@ function computeUpNext(allRequirements, current) {
   const nextStep = current + 1
   return allRequirements
     .filter(req => req.step === nextStep)
-    .map(req => ({ id: req.droid.id, name: req.droid.name, rarity: req.rarity, step: nextStep }))
+    .map(req => ({ id: req.droid.id, name: req.droid.name, imageUrl: req.droid.image_url, rarity: req.rarity, step: nextStep }))
     .sort((a, b) => a.name.localeCompare(b.name))
 }
 
@@ -113,7 +113,7 @@ export default function App() {
     setError(null)
     supabase
       .from('droid_tycoon_requirements')
-      .select('step, rarity, droid:droid_id(id, name)')
+      .select('step, rarity, droid:droid_id(id, name, image_url)')
       .eq('cycle', cycle)
       .order('step', { ascending: true })
       .then(({ data, error: err }) => {
