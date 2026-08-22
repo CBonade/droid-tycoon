@@ -41,6 +41,9 @@ const SRB_REWARDS = [
   { rb: 25, crystals: 154, creditMult: 308, xpMult: 1540 },
   { rb: 26, crystals: 172, creditMult: 344, xpMult: 1720 },
   { rb: 27, crystals: 191, creditMult: 382, xpMult: 1910 },
+  { rb: 28, crystals: 211, creditMult: 422, xpMult: 2110 },
+  { rb: 29, crystals: 232, creditMult: 464, xpMult: 2320 },
+  { rb: 30, crystals: 254, creditMult: 508, xpMult: 2540 },
 ]
 
 function Section({ title, children }) {
