@@ -1,4 +1,4 @@
-export const RARITY_ORDER = ['base', 'gold', 'diamond', 'rainbow', 'beskar', 'galactic', 'stellar']
+export const RARITY_ORDER = ['base', 'gold', 'diamond', 'rainbow', 'beskar', 'galactic', 'stellar', 'kyber']
 
 export function maxRarity(rarities) {
   const best = Math.max(...rarities.map(r => RARITY_ORDER.indexOf(r)))
@@ -13,6 +13,7 @@ export const RARITY_LABEL = {
   beskar:  'Beskar',
   galactic: 'Galactic',
   stellar:  'Stellar',
+  kyber:    'Kyber',
 }
 
 export const RARITY_STYLES = {
@@ -44,6 +45,10 @@ export const RARITY_STYLES = {
     badge: 'stellar-badge text-amber-950 font-bold shadow-rarity-stellar',
     glow:  'shadow-rarity-stellar',
   },
+  kyber: {
+    badge: 'kyber-badge text-white font-bold shadow-rarity-kyber',
+    glow:  'shadow-rarity-kyber',
+  },
 }
 
 export const CYCLE_IDENTIFIERS = {
@@ -69,13 +74,14 @@ export const STEP_COSTS = {
   21: '3T',   22: '4.5T', 23: '6T',   24: '9T',
   25: '13.5T',26: '21T',  27: '32T',  28: '45T',
   29: '68T',  30: '100T', 31: '150T', 32: '230T',
-  33: '345T', 34: '520T', 35: '778T',
+  33: '345T', 34: '520T', 35: '778T', 36: '1.2Qa',
+  37: '2.5Qa', 38: '4.5Qa', 39: '8Qa',  40: '15Qa',
 }
 
 
 export const MIN_STEP = 1
 export const MAX_CYCLE = 5
-export const MAX_STEP = 35
+export const MAX_STEP = 40
 export const DEFAULT_TARGET = 20
 
 export const MIN_CURRENT = 0

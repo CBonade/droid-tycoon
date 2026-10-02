@@ -36,6 +36,7 @@ const RARITY_AVATAR = {
   beskar:  'beskar-badge text-slate-900',
   galactic: 'galactic-badge text-white',
   stellar:  'stellar-badge text-amber-950',
+  kyber:    'kyber-badge text-white',
 }
 
 export default function DroidCard({ droid, variant = 'default' }) {

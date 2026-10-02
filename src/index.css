@@ -32,6 +32,13 @@
     animation: rainbow-shift 4s ease infinite;
   }
 
+  /* Kyber's three activated colors (green / blue / purple) — any color satisfies a requirement */
+  .kyber-badge {
+    background: linear-gradient(135deg, #064E3B 0%, #10B981 22%, #38BDF8 48%, #8B5CF6 74%, #3B0764 100%);
+    background-size: 220% 100%;
+    animation: rainbow-shift 5s ease infinite;
+  }
+
   .scanline-header {
     background:
       repeating-linear-gradient(

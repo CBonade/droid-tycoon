@@ -11,9 +11,9 @@ CREATE TABLE IF NOT EXISTS droid_tycoon_droids (
 CREATE TABLE IF NOT EXISTS droid_tycoon_requirements (
   id       SERIAL PRIMARY KEY,
   cycle    SMALLINT NOT NULL CHECK (cycle BETWEEN 1 AND 5),
-  step     SMALLINT NOT NULL CHECK (step BETWEEN 1 AND 35),
+  step     SMALLINT NOT NULL CHECK (step BETWEEN 1 AND 40),
   droid_id INTEGER  NOT NULL REFERENCES droid_tycoon_droids(id),
-  rarity   TEXT     NOT NULL CHECK (rarity IN ('base','gold','diamond','rainbow','beskar','galactic','stellar')),
+  rarity   TEXT     NOT NULL CHECK (rarity IN ('base','gold','diamond','rainbow','beskar','galactic','stellar','kyber')),
   UNIQUE (cycle, step, droid_id)
 );
 

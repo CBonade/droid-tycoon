@@ -34,6 +34,7 @@ export default {
         'rarity-beskar':  '0 0 8px rgba(148,163,184,0.5)',
         'rarity-galactic': '0 0 10px rgba(168,85,247,0.6)',
         'rarity-stellar':  '0 0 12px rgba(253,230,138,0.6)',
+        'rarity-kyber':    '0 0 10px rgba(56,189,248,0.5)',
       },
       animation: {
         'rainbow-shift': 'rainbow-shift 3s ease infinite',
