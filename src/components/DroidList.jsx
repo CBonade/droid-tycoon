@@ -1,6 +1,9 @@
+import { useState } from 'react'
 import DroidCard from './DroidCard'
 
-export default function DroidList({ droids, loading, error, countLabel = 'required', emptyText = 'No droids needed for this target.', variant = 'default' }) {
+export default function DroidList({ droids, loading, error, countLabel = 'required', emptyText = 'No droids needed for this target.', view, plan }) {
+  const [openId, setOpenId] = useState(null)
+
   if (loading) {
     return (
       <div className="flex flex-col gap-2 px-4">
@@ -33,7 +36,14 @@ export default function DroidList({ droids, loading, error, countLabel = 'requir
         {droids.length} droid{droids.length !== 1 ? 's' : ''} {countLabel}
       </p>
       {droids.map(d => (
-        <DroidCard key={d.id} droid={d} variant={variant} />
+        <DroidCard
+          key={d.id}
+          droid={d}
+          view={view}
+          plan={plan}
+          expanded={openId === d.id}
+          onToggle={() => setOpenId(openId === d.id ? null : d.id)}
+        />
       ))}
     </div>
   )

@@ -61,11 +61,6 @@
     @apply border-sw-gold bg-sw-deep;
     box-shadow: 0 0 12px rgba(201,168,76,0.35), inset 0 0 20px rgba(201,168,76,0.05);
   }
-
-  .droid-card {
-    @apply flex items-center gap-3 px-4 py-3 rounded-lg
-           border border-sw-border bg-sw-surface;
-  }
 }
 
 @layer utilities {

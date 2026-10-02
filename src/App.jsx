@@ -65,6 +65,23 @@ function computeDroidList(allRequirements, target, sort, search) {
   return list
 }
 
+// Each droid's status at current progress, for fusion recipe inputs (independent of search/sort).
+function computePlan(allRequirements, target, current, droidImages) {
+  const lastStep = new Map()
+  for (const req of allRequirements) {
+    if (req.step > target) continue
+    lastStep.set(req.droid.name, Math.max(lastStep.get(req.droid.name) ?? 0, req.step))
+  }
+  return {
+    statusOf(name) {
+      const until = lastStep.get(name)
+      if (until == null) return { kind: 'none' }
+      return until > current ? { kind: 'needed', until } : { kind: 'sellable' }
+    },
+    imageOf: name => droidImages.get(name) ?? null,
+  }
+}
+
 function computeUpNext(allRequirements, current) {
   const nextStep = current + 1
   return allRequirements
@@ -84,6 +101,7 @@ export default function App() {
   const [search, setSearch]    = useState('')
   const [refOpen, setRefOpen]  = useState(false)
   const [view, setView]        = useState('needed')
+  const [droidImages, setDroidImages] = useState(() => new Map())
 
   const setCycle = useCallback((c) => {
     setCycleRaw(c)
@@ -107,6 +125,14 @@ export default function App() {
   }, [view, sort])
 
   useEffect(() => { writeState(cycle, target, current) }, [])
+
+  // Every droid's portrait, so fusion recipes can show inputs outside the current cycle
+  useEffect(() => {
+    supabase
+      .from('droid_tycoon_droids')
+      .select('name, image_url')
+      .then(({ data }) => setDroidImages(new Map((data ?? []).map(d => [d.name, d.image_url]))))
+  }, [])
 
   useEffect(() => {
     setLoading(true)
@@ -134,6 +160,10 @@ export default function App() {
     [allDroids, current]
   )
   const upNextDroids = useMemo(() => computeUpNext(requirements, current), [requirements, current])
+  const plan = useMemo(
+    () => computePlan(requirements, target, current, droidImages),
+    [requirements, target, current, droidImages]
+  )
 
   const droids = view === 'needed' ? neededDroids : view === 'upNext' ? upNextDroids : sellDroids
 
@@ -203,10 +233,12 @@ export default function App() {
       <div className="flex-1 overflow-auto pb-8">
         <div className="max-w-lg mx-auto w-full">
           <DroidList
+            key={view}
             droids={droids}
             loading={loading}
             error={error}
-            variant={view === 'upNext' ? 'upNext' : 'default'}
+            view={view}
+            plan={plan}
             countLabel={view === 'needed' ? 'still needed' : view === 'upNext' ? 'needed for next rebirth' : 'ready to sell'}
             emptyText={
               view === 'needed'
