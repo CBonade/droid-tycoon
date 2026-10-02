@@ -1,0 +1,931 @@
+{
+  "droids": [
+    {
+      "name": "2BB",
+      "slug": "2bb",
+      "tiers": {
+        "base": "/droids/T_Portrait_2BB_Common.png",
+        "gold": "/droids/rarities/T_Portrait_2BB_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_2BB_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_2BB_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_2BB_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_2BB_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_2BB_Stellar.png"
+      }
+    },
+    {
+      "name": "A-LT",
+      "slug": "a-lt",
+      "tiers": {
+        "base": "/droids/T_Portrait_ALT_Common.png",
+        "gold": "/droids/rarities/T_Portrait_ALT_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_ALT_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_ALT_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_ALT_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_ALT_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_ALT_Stellar.png"
+      }
+    },
+    {
+      "name": "AMP WALKER",
+      "slug": "amp-walker",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo05_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo05_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo05_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo05_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo05_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo05_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo05_Stellar.png"
+      }
+    },
+    {
+      "name": "ARG",
+      "slug": "arg",
+      "tiers": {
+        "base": "/droids/T_Portrait_ARG19_Common.png",
+        "gold": "/droids/rarities/T_Portrait_ARG19_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_ARG19_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_ARG19_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_ARG19_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_ARG19_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_ARG19_Stellar.png"
+      }
+    },
+    {
+      "name": "B-U4D",
+      "slug": "b-u4d",
+      "tiers": {
+        "base": "/droids/T_Portrait_BR72_Common.png",
+        "gold": "/droids/rarities/T_Portrait_BR72_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_BR72_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_BR72_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_BR72_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_BR72_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_BR72_Stellar.png"
+      }
+    },
+    {
+      "name": "B1 BATTLE",
+      "slug": "b1-battle",
+      "tiers": {
+        "base": "/droids/T_Portrait_B1Battle_Common.png",
+        "gold": "/droids/rarities/T_Portrait_B1Battle_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_B1Battle_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_B1Battle_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_B1Battle_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_B1Battle_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_B1Battle_Stellar.png"
+      }
+    },
+    {
+      "name": "B1 HEAVY",
+      "slug": "b1-heavy",
+      "tiers": {
+        "base": "/droids/T_Portrait_B1Heavy_Common.png",
+        "gold": "/droids/rarities/T_Portrait_B1Heavy_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_B1Heavy_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_B1Heavy_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_B1Heavy_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_B1Heavy_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_B1Heavy_Stellar.png"
+      }
+    },
+    {
+      "name": "B1 SECURITY",
+      "slug": "b1-security",
+      "tiers": {
+        "base": "/droids/T_Portrait_B1Security_Common.png",
+        "gold": "/droids/rarities/T_Portrait_B1Security_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_B1Security_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_B1Security_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_B1Security_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_B1Security_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_B1Security_Stellar.png"
+      }
+    },
+    {
+      "name": "B2 HEAVY",
+      "slug": "b2-heavy",
+      "tiers": {
+        "base": "/droids/T_Portrait_B2Heavy_Common.png",
+        "gold": "/droids/rarities/T_Portrait_B2Heavy_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_B2Heavy_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_B2Heavy_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_B2Heavy_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_B2Heavy_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_B2Heavy_Stellar.png"
+      }
+    },
+    {
+      "name": "B2 SUPER",
+      "slug": "b2-super",
+      "tiers": {
+        "base": "/droids/T_Portrait_B2Super_Common.png",
+        "gold": "/droids/rarities/T_Portrait_B2Super_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_B2Super_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_B2Super_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_B2Super_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_B2Super_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_B2Super_Stellar.png"
+      }
+    },
+    {
+      "name": "B2-RP",
+      "slug": "b2-rp",
+      "tiers": {
+        "base": "/droids/T_Portrait_B2Rocket_Common.png",
+        "gold": "/droids/rarities/T_Portrait_B2Rocket_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_B2Rocket_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_B2Rocket_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_B2Rocket_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_B2Rocket_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_B2Rocket_Stellar.png"
+      }
+    },
+    {
+      "name": "BAL-CORE",
+      "slug": "bal-core",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo02_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo02_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo02_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo02_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo02_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo02_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo02_Stellar.png"
+      }
+    },
+    {
+      "name": "BB",
+      "slug": "bb",
+      "tiers": {
+        "base": "/droids/T_Portrait_BB_Common.png",
+        "gold": "/droids/rarities/T_Portrait_BB_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_BB_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_BB_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_BB_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_BB_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_BB_Stellar.png"
+      }
+    },
+    {
+      "name": "BB9",
+      "slug": "bb9",
+      "tiers": {
+        "base": "/droids/T_Portrait_BB9_Common.png",
+        "gold": "/droids/rarities/T_Portrait_BB9_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_BB9_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_BB9_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_BB9_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_BB9_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_BB9_Stellar.png"
+      }
+    },
+    {
+      "name": "BDX EXPLORER",
+      "slug": "bdx-explorer",
+      "tiers": {
+        "base": "/droids/T_Portrait_BDX_Common.png",
+        "gold": "/droids/rarities/T_Portrait_BDX_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_BDX_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_BDX_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_BDX_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_BDX_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_BDX_Stellar.png"
+      }
+    },
+    {
+      "name": "CB",
+      "slug": "cb",
+      "tiers": {
+        "base": "/droids/T_Portrait_CB_Common.png",
+        "gold": "/droids/rarities/T_Portrait_CB_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_CB_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_CB_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_CB_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_CB_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_CB_Stellar.png"
+      }
+    },
+    {
+      "name": "CYCLENS",
+      "slug": "cyclens",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo21_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo21_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo21_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo21_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo21_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo21_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo21_Stellar.png"
+      }
+    },
+    {
+      "name": "CYCLO-GRAV",
+      "slug": "cyclo-grav",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo08_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo08_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo08_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo08_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo08_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo08_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo08_Stellar.png"
+      }
+    },
+    {
+      "name": "DRFT-R",
+      "slug": "drft-r",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo20_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo20_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo20_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo20_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo20_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo20_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo20_Stellar.png"
+      }
+    },
+    {
+      "name": "DRK-1 PROBE",
+      "slug": "drk-1-probe",
+      "tiers": {
+        "base": "/droids/T_Portrait_DRK1_Common.png",
+        "gold": "/droids/rarities/T_Portrait_DRK1_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_DRK1_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_DRK1_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_DRK1_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_DRK1_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_DRK1_Stellar.png"
+      }
+    },
+    {
+      "name": "GONK",
+      "slug": "gonk",
+      "tiers": {
+        "base": "/droids/T_Portrait_GNK_Common.png",
+        "gold": "/droids/rarities/T_Portrait_GNK_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_GNK_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_GNK_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_GNK_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_GNK_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_GNK_Stellar.png"
+      }
+    },
+    {
+      "name": "GROUNDMECH",
+      "slug": "groundmech",
+      "tiers": {
+        "base": "/droids/T_Portrait_B2_Common.png",
+        "gold": "/droids/rarities/T_Portrait_B2_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_B2_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_B2_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_B2_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_B2_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_B2_Stellar.png"
+      }
+    },
+    {
+      "name": "GUNRUNNER",
+      "slug": "gunrunner",
+      "tiers": {
+        "base": "/droids/T_Portrait_Smuggler_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Smuggler_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Smuggler_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Smuggler_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Smuggler_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Smuggler_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Smuggler_Stellar.png"
+      }
+    },
+    {
+      "name": "HAUL-R",
+      "slug": "haul-r",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo13_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo13_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo13_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo13_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo13_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo13_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo13_Stellar.png"
+      }
+    },
+    {
+      "name": "HOV-R",
+      "slug": "hov-r",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo15_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo15_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo15_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo15_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo15_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo15_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo15_Stellar.png"
+      }
+    },
+    {
+      "name": "ID10",
+      "slug": "id10",
+      "tiers": {
+        "base": "/droids/T_Portrait_ID10_Common.png",
+        "gold": "/droids/rarities/T_Portrait_ID10_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_ID10_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_ID10_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_ID10_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_ID10_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_ID10_Stellar.png"
+      }
+    },
+    {
+      "name": "IG",
+      "slug": "ig",
+      "tiers": {
+        "base": "/droids/T_Portrait_IG_Common.png",
+        "gold": "/droids/rarities/T_Portrait_IG_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_IG_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_IG_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_IG_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_IG_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_IG_Stellar.png"
+      }
+    },
+    {
+      "name": "IMPERIAL PROBE",
+      "slug": "imperial-probe",
+      "tiers": {
+        "base": "/droids/T_Portrait_ViperProbe_Common.png",
+        "gold": "/droids/rarities/T_Portrait_ViperProbe_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_ViperProbe_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_ViperProbe_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_ViperProbe_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_ViperProbe_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_ViperProbe_Stellar.png"
+      }
+    },
+    {
+      "name": "KX",
+      "slug": "kx",
+      "tiers": {
+        "base": "/droids/T_Portrait_KX_Common.png",
+        "gold": "/droids/rarities/T_Portrait_KX_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_KX_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_KX_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_KX_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_KX_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_KX_Stellar.png"
+      }
+    },
+    {
+      "name": "LEP",
+      "slug": "lep",
+      "tiers": {
+        "base": "/droids/T_Portrait_LEP_Common.png",
+        "gold": "/droids/rarities/T_Portrait_LEP_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_LEP_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_LEP_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_LEP_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_LEP_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_LEP_Stellar.png"
+      }
+    },
+    {
+      "name": "LNG-SHOT",
+      "slug": "lng-shot",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo16_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo16_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo16_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo16_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo16_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo16_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo16_Stellar.png"
+      }
+    },
+    {
+      "name": "LO",
+      "slug": "lo",
+      "tiers": {
+        "base": "/droids/T_Portrait_L0_Common.png",
+        "gold": "/droids/rarities/T_Portrait_L0_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_L0_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_L0_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_L0_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_L0_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_L0_Stellar.png"
+      }
+    },
+    {
+      "name": "LOADLIFTER",
+      "slug": "loadlifter",
+      "tiers": {
+        "base": "/droids/T_Portrait_LoadLifter_Common.png",
+        "gold": "/droids/rarities/T_Portrait_LoadLifter_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_LoadLifter_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_LoadLifter_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_LoadLifter_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_LoadLifter_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_LoadLifter_Stellar.png"
+      }
+    },
+    {
+      "name": "MECHA-DROID",
+      "slug": "mecha-droid",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo06_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo06_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo06_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo06_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo06_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo06_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo06_Stellar.png"
+      }
+    },
+    {
+      "name": "MO-TRAK",
+      "slug": "mo-trak",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo22_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo22_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo22_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo22_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo22_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo22_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo22_Stellar.png"
+      }
+    },
+    {
+      "name": "MONO-WLKR",
+      "slug": "mono-wlkr",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo18_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo18_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo18_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo18_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo18_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo18_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo18_Stellar.png"
+      }
+    },
+    {
+      "name": "MOUSE",
+      "slug": "mouse",
+      "tiers": {
+        "base": "/droids/T_Portrait_MSE_Common.png",
+        "gold": "/droids/rarities/T_Portrait_MSE_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_MSE_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_MSE_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_MSE_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_MSE_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_MSE_Stellar.png"
+      }
+    },
+    {
+      "name": "NAV-EX",
+      "slug": "nav-ex",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo01_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo01_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo01_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo01_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo01_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo01_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo01_Stellar.png"
+      }
+    },
+    {
+      "name": "OPTI-POD",
+      "slug": "opti-pod",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo19_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo19_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo19_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo19_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo19_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo19_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo19_Stellar.png"
+      }
+    },
+    {
+      "name": "OPTI-STRK",
+      "slug": "opti-strk",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo14_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo14_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo14_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo14_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo14_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo14_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo14_Stellar.png"
+      }
+    },
+    {
+      "name": "ORB-WALKER",
+      "slug": "orb-walker",
+      "tiers": {
+        "base": "/droids/T_Portrait_OrbWalker_Common.png",
+        "gold": "/droids/rarities/T_Portrait_OrbWalker_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_OrbWalker_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_OrbWalker_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_OrbWalker_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_OrbWalker_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_OrbWalker_Stellar.png"
+      }
+    },
+    {
+      "name": "PIT",
+      "slug": "pit",
+      "tiers": {
+        "base": "/droids/T_Portrait_PitDroid_Common.png",
+        "gold": "/droids/rarities/T_Portrait_PitDroid_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_PitDroid_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_PitDroid_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_PitDroid_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_PitDroid_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_PitDroid_Stellar.png"
+      }
+    },
+    {
+      "name": "PROTO-ROLLER",
+      "slug": "proto-roller",
+      "tiers": {
+        "base": "/droids/T_Portrait_ProtoRoller_Common.png",
+        "gold": "/droids/rarities/T_Portrait_ProtoRoller_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_ProtoRoller_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_ProtoRoller_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_ProtoRoller_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_ProtoRoller_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_ProtoRoller_Stellar.png"
+      }
+    },
+    {
+      "name": "R2",
+      "slug": "r2",
+      "tiers": {
+        "base": "/droids/T_Portrait_R2_Common.png",
+        "gold": "/droids/rarities/T_Portrait_R2_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_R2_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_R2_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_R2_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_R2_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_R2_Stellar.png"
+      }
+    },
+    {
+      "name": "R3",
+      "slug": "r3",
+      "tiers": {
+        "base": "/droids/T_Portrait_R3_Common.png",
+        "gold": "/droids/rarities/T_Portrait_R3_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_R3_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_R3_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_R3_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_R3_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_R3_Stellar.png"
+      }
+    },
+    {
+      "name": "R4",
+      "slug": "r4",
+      "tiers": {
+        "base": "/droids/T_Portrait_R4_Common.png",
+        "gold": "/droids/rarities/T_Portrait_R4_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_R4_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_R4_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_R4_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_R4_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_R4_Stellar.png"
+      }
+    },
+    {
+      "name": "R5",
+      "slug": "r5",
+      "tiers": {
+        "base": "/droids/T_Portrait_R5_Common.png",
+        "gold": "/droids/rarities/T_Portrait_R5_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_R5_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_R5_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_R5_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_R5_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_R5_Stellar.png"
+      }
+    },
+    {
+      "name": "R6",
+      "slug": "r6",
+      "tiers": {
+        "base": "/droids/T_Portrait_R6_Common.png",
+        "gold": "/droids/rarities/T_Portrait_R6_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_R6_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_R6_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_R6_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_R6_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_R6_Stellar.png"
+      }
+    },
+    {
+      "name": "R7",
+      "slug": "r7",
+      "tiers": {
+        "base": "/droids/T_Portrait_R7_Common.png",
+        "gold": "/droids/rarities/T_Portrait_R7_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_R7_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_R7_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_R7_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_R7_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_R7_Stellar.png"
+      }
+    },
+    {
+      "name": "R8",
+      "slug": "r8",
+      "tiers": {
+        "base": "/droids/T_Portrait_R8_Common.png",
+        "gold": "/droids/rarities/T_Portrait_R8_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_R8_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_R8_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_R8_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_R8_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_R8_Stellar.png"
+      }
+    },
+    {
+      "name": "R9",
+      "slug": "r9",
+      "tiers": {
+        "base": "/droids/T_Portrait_R9_Common.png",
+        "gold": "/droids/rarities/T_Portrait_R9_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_R9_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_R9_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_R9_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_R9_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_R9_Stellar.png"
+      }
+    },
+    {
+      "name": "RIC",
+      "slug": "ric",
+      "tiers": {
+        "base": "/droids/T_Portrait_Ric_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Ric_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Ric_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Ric_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Ric_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Ric_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Ric_Stellar.png"
+      }
+    },
+    {
+      "name": "RIC-1200",
+      "slug": "ric-1200",
+      "tiers": {
+        "base": "/droids/T_Portrait_Ric1200_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Ric1200_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Ric1200_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Ric1200_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Ric1200_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Ric1200_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Ric1200_Stellar.png"
+      }
+    },
+    {
+      "name": "ROLL-R",
+      "slug": "roll-r",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo12_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo12_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo12_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo12_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo12_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo12_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo12_Stellar.png"
+      }
+    },
+    {
+      "name": "SEN-TRI",
+      "slug": "sen-tri",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo17_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo17_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo17_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo17_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo17_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo17_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo17_Stellar.png"
+      }
+    },
+    {
+      "name": "SENATE HOVERCAM",
+      "slug": "senate-hovercam",
+      "tiers": {
+        "base": "/droids/T_Portrait_SenateHovercam_Common.png",
+        "gold": "/droids/rarities/T_Portrait_SenateHovercam_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_SenateHovercam_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_SenateHovercam_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_SenateHovercam_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_SenateHovercam_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_SenateHovercam_Stellar.png"
+      }
+    },
+    {
+      "name": "SNOW MOUSE",
+      "slug": "snow-mouse",
+      "tiers": {
+        "base": "/droids/T_Portrait_SnowMouse_Common.png",
+        "gold": "/droids/rarities/T_Portrait_SnowMouse_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_SnowMouse_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_SnowMouse_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_SnowMouse_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_SnowMouse_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_SnowMouse_Stellar.png"
+      }
+    },
+    {
+      "name": "STRIKE-ORB",
+      "slug": "strike-orb",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo04_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo04_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo04_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo04_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo04_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo04_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo04_Stellar.png"
+      }
+    },
+    {
+      "name": "TRAK-R",
+      "slug": "trak-r",
+      "tiers": {
+        "base": "/droids/T_Portrait_TrakR_Common.png",
+        "gold": "/droids/rarities/T_Portrait_TrakR_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_TrakR_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_TrakR_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_TrakR_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_TrakR_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_TrakR_Stellar.png"
+      }
+    },
+    {
+      "name": "TRI-TEK",
+      "slug": "tri-tek",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo23_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo23_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo23_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo23_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo23_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo23_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo23_Stellar.png"
+      }
+    },
+    {
+      "name": "UTIL-TEC",
+      "slug": "util-tec",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo09_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo09_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo09_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo09_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo09_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo09_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo09_Stellar.png"
+      }
+    },
+    {
+      "name": "VECT-ARM",
+      "slug": "vect-arm",
+      "tiers": {
+        "base": "/droids/T_Portrait_Combo11_Common.png",
+        "gold": "/droids/rarities/T_Portrait_Combo11_Gold.png",
+        "diamond": "/droids/rarities/T_Portrait_Combo11_Diamond.png",
+        "rainbow": "/droids/rarities/T_Portrait_Combo11_Rainbow.png",
+        "beskar": "/droids/rarities/T_Portrait_Combo11_Beskar.png",
+        "galactic": "/droids/rarities/T_Portrait_Combo11_Galactic.png",
+        "stellar": "/droids/rarities/T_Portrait_Combo11_Stellar.png"
+      }
+    }
+  ],
+  "fusions": [
+    {
+      "name": "ARM-CORE",
+      "slug": "arm-core",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion16_Common.png"
+      }
+    },
+    {
+      "name": "AXI-POD",
+      "slug": "axi-pod",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion04_Common.png"
+      }
+    },
+    {
+      "name": "BTL-R",
+      "slug": "btl-r",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion17_Common.png"
+      }
+    },
+    {
+      "name": "FUS-3",
+      "slug": "fus-3",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion05_Common.png"
+      }
+    },
+    {
+      "name": "LOW-MO",
+      "slug": "low-mo",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion06_Common.png"
+      }
+    },
+    {
+      "name": "LUG-G",
+      "slug": "lug-g",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion03_Common.png"
+      }
+    },
+    {
+      "name": "N-UL",
+      "slug": "n-ul",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion014_Common.png"
+      }
+    },
+    {
+      "name": "OPT-AR",
+      "slug": "opt-ar",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion15_Common.png"
+      }
+    },
+    {
+      "name": "ORB-XL",
+      "slug": "orb-xl",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion09_Common.png"
+      }
+    },
+    {
+      "name": "QIK-BIT",
+      "slug": "qik-bit",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion10_Common.png"
+      }
+    },
+    {
+      "name": "RIV-3T",
+      "slug": "riv-3t",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion02_Common.png"
+      }
+    },
+    {
+      "name": "RO-TOR",
+      "slug": "ro-tor",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion08_Common.png"
+      }
+    },
+    {
+      "name": "SCRP-R",
+      "slug": "scrp-r",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion13_Common.png"
+      }
+    },
+    {
+      "name": "SRV-O",
+      "slug": "srv-o",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion01_Common.png"
+      }
+    },
+    {
+      "name": "WHL-EX",
+      "slug": "whl-ex",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion11_Common.png"
+      }
+    },
+    {
+      "name": "X-ONK",
+      "slug": "x-onk",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion07_Common.png"
+      }
+    },
+    {
+      "name": "ZRO-TEC",
+      "slug": "zro-tec",
+      "tiers": {
+        "base": "/droids/fusion/T_Portrait_Fusion12_Common.png"
+      }
+    }
+  ]
+}

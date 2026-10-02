@@ -7,8 +7,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "gen-icons": "node scripts/generate-icons.js",
-    "crop-droids": "node scripts/crop-droids.js",
-    "upload-images": "node scripts/upload-images.js"
+    "fetch-portraits": "node scripts/fetch-portraits.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0",
