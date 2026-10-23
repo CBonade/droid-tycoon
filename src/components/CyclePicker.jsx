@@ -1,4 +1,6 @@
-import { CYCLE_IDENTIFIERS, CYCLE_TIEBREAKERS } from '../utils/rarity'
+import { CYCLE_IDENTIFIERS, CYCLE_TIEBREAKERS, MAX_CYCLE } from '../utils/rarity'
+
+const CYCLES = Array.from({ length: MAX_CYCLE }, (_, i) => i + 1)
 
 export default function CyclePicker({ cycle, onChange }) {
   return (
@@ -6,8 +8,8 @@ export default function CyclePicker({ cycle, onChange }) {
       <p className="text-xs font-rajdhani text-sw-dim uppercase tracking-widest mb-2">
         Select Your Cycle
       </p>
-      <div className="grid grid-cols-5 gap-1.5">
-        {[1, 2, 3, 4, 5].map(c => (
+      <div className="grid grid-cols-3 gap-1.5">
+        {CYCLES.map(c => (
           <button
             key={c}
             onClick={() => onChange(c)}
@@ -32,7 +34,7 @@ export default function CyclePicker({ cycle, onChange }) {
         ))}
       </div>
       <p className="text-[10px] text-sw-muted mt-1.5">
-        Match your Rebirth 1 droids to identify your cycle. Cycles 2 & 5 share a trio — check which droid your Rebirth 2 needs.
+        Match your Rebirth 1 droids to identify your cycle. Cycles 2, 5 & 6 share a trio — check which droid your Rebirth 2 needs.
       </p>
     </div>
   )

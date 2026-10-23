@@ -32,9 +32,9 @@ All tables are prefixed `droid_tycoon_` to avoid collisions with sprite-tracker.
 
 **`droid_tycoon_droids`**: `id`, `name` (unique), `image_url` (nullable)
 
-**`droid_tycoon_requirements`**: `id`, `cycle` (1–5), `step` (1–40), `droid_id` → droids, `rarity` (base/gold/diamond/rainbow/beskar/galactic/stellar/kyber)
+**`droid_tycoon_requirements`**: `id`, `cycle` (1–6), `step` (1–40), `droid_id` → droids, `rarity` (base/gold/diamond/rainbow/beskar/galactic/stellar/kyber)
 
-Both ranges are enforced by CHECK constraints (`droid_tycoon_requirements_step_check`, `droid_tycoon_requirements_rarity_check`), so a new step range or tier needs a constraint change in the live DB (and in `supabase/schema.sql`) before rows can be inserted.
+All three ranges are enforced by CHECK constraints (`droid_tycoon_requirements_cycle_check`, `droid_tycoon_requirements_step_check`, `droid_tycoon_requirements_rarity_check`), so a new cycle, step range, or tier needs a constraint change in the live DB (and in `supabase/schema.sql`) before rows can be inserted.
 
 Steps 36–40 are all Kyber requirements. Kyber has four in-game colors (Inactive/Green/Blue/Purple); any of them satisfies a requirement, so the app models Kyber as one tier.
 
@@ -51,7 +51,7 @@ No auth — both tables have RLS enabled with a public SELECT policy.
 
 ## How the app works
 
-- **Cycle picker** (1–5): identifies which Super Rebirth cycle the user is in by matching their Rebirth 1 droid trio against `CYCLE_IDENTIFIERS` in `src/utils/rarity.js`. Cycles 2 and 5 share the same Rebirth 1 trio (ID10/MOUSE/GONK) — `CYCLE_TIEBREAKERS` supplies a distinguishing Rebirth 2 droid shown on those two buttons
+- **Cycle picker** (1–`MAX_CYCLE`, currently 6): identifies which Super Rebirth cycle the user is in by matching their Rebirth 1 droid trio against `CYCLE_IDENTIFIERS` in `src/utils/rarity.js`. Cycles 2, 5 and 6 share the same Rebirth 1 trio (ID10/MOUSE/GONK) — `CYCLE_TIEBREAKERS` supplies a distinguishing Rebirth 2 droid shown on those three buttons. Requirements are fetched per cycle; the fetch ignores replies for a cycle that is no longer selected, so a slow earlier request can't overwrite the current cycle's list
 - **Target stepper**: the Super Rebirth step the user is planning toward (min 1, max 40 currently, `MAX_STEP` in `rarity.js`). Displays the credits required at that step from `STEP_COSTS`
 - **Current stepper**: the step the user is *actually* at right now (separate from target) — min 0, same max as target
 - **Droid list**: computed from `droid_tycoon_requirements` filtered to `step <= target`, grouped per droid. Each droid shows its first-appearance step, its highest rarity needed up to the target, and its last-needed step (the "safe to sell" point)
@@ -84,7 +84,7 @@ All of this lives hardcoded in `src/components/ReferenceDrawer.jsx` — it is ge
 
 ## Droid portraits
 
-Portraits are **self-hosted** WebP files, one folder per droid and one file per tier: `public/droids/<slug>/<tier>.webp` (slug = droid name lowercased, runs of non-alphanumerics → `-`, e.g. `DRK-1 PROBE` → `drk-1-probe`; tiers `base` … `stellar`). There is no Kyber art yet; `portraitUrl()` in `src/utils/portrait.js` serves the Stellar file for Kyber.
+Portraits are **self-hosted** WebP files, one folder per droid and one file per tier: `public/droids/<slug>/<tier>.webp` (slug = droid name lowercased, runs of non-alphanumerics → `-`, e.g. `DRK-1 PROBE` → `drk-1-probe`; tiers `base` … `stellar`). EG-58 has no art on gonk.tools yet, so its cards show initials. There is no Kyber art yet; `portraitUrl()` in `src/utils/portrait.js` serves the Stellar file for Kyber.
 
 `image_url` in `droid_tycoon_droids` holds either the folder (`/droids/<slug>/`, trailing slash — `portraitUrl()` appends `<tier>.webp`) or a single image URL used for every tier.
 
@@ -98,7 +98,7 @@ New files need a deploy (push) to go live; the SQL change itself does not — so
 
 ## Updating game data (new rebirth steps added by Epic)
 
-Add new rows to `supabase/seed.sql` and re-run the affected INSERT block in the Supabase SQL editor. The `ON CONFLICT DO NOTHING` clause makes it safe to re-run the entire seed.
+Add new rows to `supabase/seed.sql` and re-run the affected INSERT block in the Supabase SQL editor. A new cycle also needs `MAX_CYCLE`, `CYCLE_IDENTIFIERS` (and a `CYCLE_TIEBREAKERS` entry if its Rebirth 1 trio repeats another cycle's) in `rarity.js`, plus the cycle CHECK constraint widened. The `ON CONFLICT DO NOTHING` clause makes it safe to re-run the entire seed.
 
 Also update `MAX_STEP` in `src/utils/rarity.js` and add the new cost to `STEP_COSTS`. If the new steps go past the step CHECK constraint (or use a new tier), widen the constraint first — see "Data model". A new tier also needs `RARITY_ORDER`/`RARITY_LABEL`/`RARITY_STYLES` in `rarity.js`, a badge class in `src/index.css`, a shadow in `tailwind.config.js`, and `RARITY_AVATAR` in `DroidCard.jsx`.
 

@@ -57,12 +57,14 @@ export const CYCLE_IDENTIFIERS = {
   3: ['MOUSE', 'PIT', 'GONK'],
   4: ['ID10', 'PIT', 'DRK-1 PROBE'],
   5: ['ID10', 'MOUSE', 'GONK'],
+  6: ['GONK', 'MOUSE', 'ID10'],
 }
 
-// Cycles 2 and 5 share the same Rebirth 1 trio — the Rebirth 2 droids tell them apart.
+// Cycles 2, 5 and 6 share the same Rebirth 1 trio — the Rebirth 2 droids tell them apart.
 export const CYCLE_TIEBREAKERS = {
   2: 'R2: SENATE HOVERCAM',
   5: 'R2: IMPERIAL PROBE',
+  6: 'R2: EG-58',
 }
 
 export const STEP_COSTS = {
@@ -80,7 +82,7 @@ export const STEP_COSTS = {
 
 
 export const MIN_STEP = 1
-export const MAX_CYCLE = 5
+export const MAX_CYCLE = 6
 export const MAX_STEP = 40
 export const DEFAULT_TARGET = 20
 
