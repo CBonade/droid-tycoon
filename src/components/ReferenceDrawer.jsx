@@ -37,7 +37,7 @@ const PROTOCOL_DROIDS = [
   { name: 'TDA',  cls: 'Mythic',    cps: 20, crafting: 300 },
 ]
 
-const SRB_REWARDS = [
+export const SRB_REWARDS = [
   { rb: 12, crystals: 11,  creditMult: 22,   xpMult: 110  },
   { rb: 13, crystals: 16,  creditMult: 32,   xpMult: 160  },
   { rb: 14, crystals: 22,  creditMult: 44,   xpMult: 220  },

@@ -8,6 +8,7 @@ import ViewToggle from './components/ViewToggle'
 import DroidList from './components/DroidList'
 import SortSearchBar from './components/SortSearchBar'
 import ReferenceDrawer from './components/ReferenceDrawer'
+import SuperRebirthButton from './components/SuperRebirthButton'
 
 function readParam(key, fallback, min, max) {
   const url = new URLSearchParams(window.location.search)
@@ -118,6 +119,13 @@ export default function App() {
     writeState(cycle, target, cur)
   }, [cycle, target])
 
+  const superRebirth = useCallback(() => {
+    const next = (cycle % MAX_CYCLE) + 1
+    setCycleRaw(next)
+    setCurrentRaw(0)
+    writeState(next, target, 0)
+  }, [cycle, target])
+
   const changeView = useCallback((v) => {
     setView(v)
     if (v === 'sell' && view !== 'sell') setSort('recentSell')
@@ -214,6 +222,8 @@ export default function App() {
         <div className="border-t border-sw-border/50 pt-4">
           <CurrentStepper current={current} onChange={setCurrent} />
         </div>
+
+        <SuperRebirthButton cycle={cycle} current={current} onSuperRebirth={superRebirth} />
 
         <div className="flex items-center gap-3 px-4 pb-3">
           <div className="flex-1 h-px bg-sw-border" />

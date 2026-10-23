@@ -82,6 +82,8 @@ export const STEP_COSTS = {
 
 
 export const MIN_STEP = 1
+// Super Rebirth unlocks once you reach this rebirth level
+export const MIN_SUPER_REBIRTH = 12
 export const MAX_CYCLE = 6
 export const MAX_STEP = 40
 export const DEFAULT_TARGET = 20
