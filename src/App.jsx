@@ -135,18 +135,23 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    // A slow reply for a previously selected cycle must not overwrite this one
+    let stale = false
     setLoading(true)
     setError(null)
+    setRequirements([])
     supabase
       .from('droid_tycoon_requirements')
       .select('step, rarity, droid:droid_id(id, name, image_url)')
       .eq('cycle', cycle)
       .order('step', { ascending: true })
       .then(({ data, error: err }) => {
+        if (stale) return
         if (err) { setError(err); setLoading(false); return }
         setRequirements(data ?? [])
         setLoading(false)
       })
+    return () => { stale = true }
   }, [cycle])
 
   const allDroids = useMemo(
