@@ -9,6 +9,7 @@ import DroidList from './components/DroidList'
 import SortSearchBar from './components/SortSearchBar'
 import ReferenceDrawer from './components/ReferenceDrawer'
 import SuperRebirthButton from './components/SuperRebirthButton'
+import Roadmap from './components/Roadmap'
 
 function readParam(key, fallback, min, max) {
   const url = new URLSearchParams(window.location.search)
@@ -181,11 +182,11 @@ export default function App() {
   const droids = view === 'needed' ? neededDroids : view === 'upNext' ? upNextDroids : sellDroids
 
   return (
-    <div className="min-h-screen bg-sw-void flex flex-col">
+    <div className="min-h-screen bg-sw-void flex flex-col wide:h-[100dvh] wide:overflow-hidden">
 
       {/* Header */}
       <header className="scanline-header border-b border-sw-border" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
-        <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="max-w-lg wide:max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
           <div>
             <div className="flex items-baseline gap-3">
               <h1 className="font-orbitron text-xl font-black text-sw-gold text-shadow-gold tracking-wider">
@@ -209,61 +210,73 @@ export default function App() {
         </div>
       </header>
 
-      {/* Controls */}
-      <div className="max-w-lg mx-auto w-full">
-        <div className="pt-4">
-          <CyclePicker cycle={cycle} onChange={setCycle} />
-        </div>
+      {/* Phone: one column. Wide (unfolded): controls + roadmap on the left, droids on the right, each scrolling on its own */}
+      <div className="flex-1 flex flex-col wide:grid wide:grid-cols-[minmax(240px,2fr)_minmax(0,3fr)] wide:min-h-0 wide:max-w-5xl wide:mx-auto wide:w-full">
 
-        <div className="border-t border-sw-border/50 pt-4">
-          <TargetStepper target={target} onChange={setTarget} />
-        </div>
+        {/* Controls */}
+        <aside className="max-w-lg mx-auto w-full wide:max-w-none wide:overflow-y-auto wide:border-r wide:border-sw-border/50">
+          <div className="pt-4">
+            <CyclePicker cycle={cycle} onChange={setCycle} />
+          </div>
 
-        <div className="border-t border-sw-border/50 pt-4">
-          <CurrentStepper current={current} onChange={setCurrent} />
-        </div>
+          <div className="border-t border-sw-border/50 pt-4">
+            <TargetStepper target={target} onChange={setTarget} />
+          </div>
 
-        <SuperRebirthButton cycle={cycle} current={current} onSuperRebirth={superRebirth} />
+          <div className="border-t border-sw-border/50 pt-4">
+            <CurrentStepper current={current} onChange={setCurrent} />
+          </div>
 
-        <div className="flex items-center gap-3 px-4 pb-3">
-          <div className="flex-1 h-px bg-sw-border" />
-          <span className="text-[10px] font-orbitron text-sw-muted tracking-widest uppercase">Droids</span>
-          <div className="flex-1 h-px bg-sw-border" />
-        </div>
+          <SuperRebirthButton cycle={cycle} current={current} onSuperRebirth={superRebirth} />
 
-        <ViewToggle
-          view={view}
-          onChange={changeView}
-          neededCount={neededDroids.length}
-          upNextCount={upNextDroids.length}
-          sellCount={sellDroids.length}
-        />
+          <div className="hidden wide:block">
+            <Roadmap requirements={requirements} loading={loading} current={current} target={target} />
+          </div>
+        </aside>
 
-        {view !== 'upNext' && (
-          <SortSearchBar sort={sort} onSort={setSort} search={search} onSearch={setSearch} view={view} />
-        )}
-      </div>
+        <main className="flex-1 flex flex-col wide:min-h-0 wide:overflow-y-auto">
+          <div className="max-w-lg mx-auto w-full wide:sticky wide:top-0 wide:z-10 wide:bg-sw-void wide:pt-4">
+            <div className="flex items-center gap-3 px-4 pb-3">
+              <div className="flex-1 h-px bg-sw-border" />
+              <span className="text-[10px] font-orbitron text-sw-muted tracking-widest uppercase">Droids</span>
+              <div className="flex-1 h-px bg-sw-border" />
+            </div>
 
-      {/* Droid list */}
-      <div className="flex-1 overflow-auto pb-8">
-        <div className="max-w-lg mx-auto w-full">
-          <DroidList
-            key={view}
-            droids={droids}
-            loading={loading}
-            error={error}
-            view={view}
-            plan={plan}
-            countLabel={view === 'needed' ? 'still needed' : view === 'upNext' ? 'needed for next rebirth' : 'ready to sell'}
-            emptyText={
-              view === 'needed'
-                ? 'No droids left to get — everything up to your target is already past its sell point.'
-                : view === 'upNext'
-                  ? 'Nothing queued — no requirements found for your next rebirth.'
-                  : 'Nothing to sell yet — no droids have passed their sell point.'
-            }
-          />
-        </div>
+            <ViewToggle
+              view={view}
+              onChange={changeView}
+              neededCount={neededDroids.length}
+              upNextCount={upNextDroids.length}
+              sellCount={sellDroids.length}
+            />
+
+            {view !== 'upNext' && (
+              <SortSearchBar sort={sort} onSort={setSort} search={search} onSearch={setSearch} view={view} />
+            )}
+          </div>
+
+          {/* Droid list */}
+          <div className="flex-1 pb-8">
+            <div className="max-w-lg mx-auto w-full">
+              <DroidList
+                key={view}
+                droids={droids}
+                loading={loading}
+                error={error}
+                view={view}
+                plan={plan}
+                countLabel={view === 'needed' ? 'still needed' : view === 'upNext' ? 'needed for next rebirth' : 'ready to sell'}
+                emptyText={
+                  view === 'needed'
+                    ? 'No droids left to get — everything up to your target is already past its sell point.'
+                    : view === 'upNext'
+                      ? 'Nothing queued — no requirements found for your next rebirth.'
+                      : 'Nothing to sell yet — no droids have passed their sell point.'
+                }
+              />
+            </div>
+          </div>
+        </main>
       </div>
 
       <ReferenceDrawer open={refOpen} onClose={() => setRefOpen(false)} />

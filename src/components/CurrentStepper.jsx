@@ -6,7 +6,7 @@ export default function CurrentStepper({ current, onChange }) {
 
   return (
     <div className="px-4 pb-4">
-      <div className="flex items-center justify-between bg-sw-surface border border-sw-border rounded-xl p-4">
+      <div className="flex items-center justify-between bg-sw-surface border border-sw-border rounded-xl p-4 wide:flex-col wide:items-stretch wide:gap-3">
         <div>
           <p className="text-xs font-rajdhani text-sw-dim uppercase tracking-widest">
             Current Rebirth Level
@@ -16,7 +16,7 @@ export default function CurrentStepper({ current, onChange }) {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 wide:justify-between">
           <button
             onClick={dec}
             disabled={current <= MIN_CURRENT}

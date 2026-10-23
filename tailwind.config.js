@@ -3,6 +3,10 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      // Unfolded foldables and tablets. Sits above the widest phones and folded covers.
+      screens: {
+        wide: '560px',
+      },
       colors: {
         'sw-void':    '#0a0a14',
         'sw-deep':    '#0f0f1e',
